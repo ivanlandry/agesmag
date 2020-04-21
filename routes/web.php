@@ -19,3 +19,8 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 Route::resource('post','PostController');
 Route::resource('contact','ContactController');
+
+Route::middleware(['auth','IsAdmin'])->namespace('Admin')->prefix('admin')->group(function (){
+
+    Route::get('/','HomeController@index');
+});
