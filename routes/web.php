@@ -22,5 +22,7 @@ Route::resource('contact','ContactController');
 
 Route::middleware(['auth','IsAdmin'])->namespace('Admin')->prefix('admin')->group(function (){
 
+    Route::resource('categorie','CategoriePostController');
+    Route::resource('user','UserController');
     Route::get('/','HomeController@index');
 });

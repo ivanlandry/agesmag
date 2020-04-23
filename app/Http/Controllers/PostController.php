@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\CategoriePost;
 use App\Post;
 use Illuminate\Http\Request;
 
@@ -12,6 +13,12 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index','show','store']);
+    }
+
     public function index()
     {
         //
@@ -24,7 +31,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('layouts.newPost');
+        $categories = CategoriePost::all();
+
+        return view('layouts.newPost',compact('categories'));
     }
 
     /**

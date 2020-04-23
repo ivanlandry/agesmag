@@ -11,7 +11,7 @@
                 <ul>
                     <li><a href=""><i class="fa fa-search" style="color:blue;"></i> Toutes les offres </a></li>
 
-                    <li class="dropdown">
+                    <li class="dropdown" >
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#" @click.prevent><i
                                 class="fa fa-user" style="color:blue;"></i> Mon compte </a>
                         <ul class="dropdown-menu">
@@ -38,7 +38,7 @@
             </div>
         </div>
 
-        <div class="col-md-2">
+        <div class="col-md-1">
             <div class="header-right">
                 <ul class="list-unstyled list-inline">
                     <li class="active">

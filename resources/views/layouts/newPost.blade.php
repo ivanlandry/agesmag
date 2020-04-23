@@ -42,8 +42,10 @@
                             <label for="">choississez une categorie *</label>
                             <select name="" id="" class="form-control">
                                 <option value="choisi">choisir la categorie</option>
-                                <option value="choisi">Produits agricoles</option>
-                                <option value="choisi">Elevage</option>
+                                @foreach($categories as $categorie)
+                                    <option value="{{ $categorie->title }}">{{ $categorie->title }}</option>
+                                @endforeach
+                                <option disabled="disabled">------------------</option>
                             </select>
                         </div>
                         <br>

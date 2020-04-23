@@ -54,22 +54,6 @@
                                                 </div>
                                             </div>
                                         </a>
-                                        <a href="#" class="list-group-item list-group-item-action">
-                                            <div class="notification-info">
-                                                <div class="notification-list-user-img"><img src="{{ asset('assets/images/avatar-3.jpg') }}" alt="" class="user-avatar-md rounded-circle"></div>
-                                                <div class="notification-list-user-block"><span class="notification-list-user-name">John Abraham </span>is now following you
-                                                    <div class="notification-date">2 days ago</div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="list-group-item list-group-item-action">
-                                            <div class="notification-info">
-                                                <div class="notification-list-user-img"><img src="{{ asset('assets/images/avatar-4.jpg') }}" alt="" class="user-avatar-md rounded-circle"></div>
-                                                <div class="notification-list-user-block"><span class="notification-list-user-name">Monaan Pechi</span> is watching your main repository
-                                                    <div class="notification-date">2 min ago</div>
-                                                </div>
-                                            </div>
-                                        </a>
 
                                     </div>
                                 </div>
@@ -81,7 +65,7 @@
                     </li>
 
                     <li class="nav-item dropdown nav-user">
-                        <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/avatar-1.jpg" alt="" class="user-avatar-md rounded-circle"></a>
+                        <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img src="assets/images/avatar-1.jpg" alt="" class="user-avatar-md rounded-circle"></a>
                         <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
                             <div class="nav-user-info">
                                 <h5 class="mb-0 text-white nav-user-name">John Abraham </h5>
@@ -89,7 +73,11 @@
                             </div>
                             <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Account</a>
                             <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
-                            <a class="dropdown-item" href="#"><i class="fas fa-power-off mr-2"></i>Logout</a>
+                            <a class="dropdown-item" href="{{ route('logout')  }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"><i class="fas fa-power-off mr-2" ></i>deconnexion
+                                <form id="logout-form" method="POST" action="{{ route('logout')  }}" style="display: none;">
+                                    @csrf
+                                </form></a>
                         </div>
                     </li>
                 </ul>
@@ -111,11 +99,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="">Categories de produits</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="">Sous-categories de produits</a>
+                            <a class="nav-link" href="{{ route('categorie.index') }}">Categories de produits</a>
                         </li>
 
                         <li class="nav-item">
@@ -123,7 +107,10 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="">Utilisateurs</a>
+                            <a class="nav-link" href="{{ route('user.index') }}">Utilisateurs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Messages</a>
                         </li>
                     </ul>
                 </div>
