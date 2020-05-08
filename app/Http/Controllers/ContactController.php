@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
+    public function __construc(){
+        $this->middleware(['auth','IsAdmin'])->except(['create','store']);
+    }
+
     public function index(){
 
     }

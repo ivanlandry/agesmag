@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <div class="container">
+    <div class="container" style="padding-right: 50px;">
         <div class="page-breadcrumb">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
@@ -22,7 +22,7 @@
                 <div class="row">
 
                     <div class="col-md-6 col-md-offset-3">
-                        <div style="border:2px solid whitesmoke; padding:50px 100px 50px 100px;">
+                        <div class="box_auth">
                             <h3 style="text-align: center"><b>Se connecter</b></h3>
                             <label for="nom"><b>Adresse email</b></label>
                             <div>

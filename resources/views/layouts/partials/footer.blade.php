@@ -3,7 +3,7 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-3 col-sm-6">
+            <div class="col-md-4 col-sm-4">
                 <div class="footer-about-us">
                     <h2>u<span>Stora</span></h2>
                     <p>L doloribus ver ritatis magni at?</p>
@@ -11,7 +11,7 @@
                 </div>
             </div>
 
-            <div class="col-md-3 col-sm-6">
+            <div class="col-md-4 col-sm-4">
                 <div class="footer-menu">
                     <h2 class="footer-wid-title">Mon compte</h2>
                     <ul>
@@ -26,16 +26,8 @@
                 </div>
             </div>
 
-            <div class="col-md-3 col-sm-6">
-                <div class="footer-menu">
-                    <h2 class="footer-wid-title">Categories</h2>
-                    <ul>
-                        <li><a href="#">Mobile Phone</a></li>
-                    </ul>
-                </div>
-            </div>
 
-            <div class="col-md-3 col-sm-6">
+            <div class="col-md-4 col-sm-4">
                 <div class="footer-newsletter">
                     <h2 class="footer-wid-title">Newsletter</h2>
                     <p>S'inscrire a la newsletter pour etre informé des nouveautés</p>

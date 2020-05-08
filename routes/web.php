@@ -17,12 +17,16 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::resource('post','PostController');
-Route::resource('contact','ContactController');
 
-Route::middleware(['auth','IsAdmin'])->namespace('Admin')->prefix('admin')->group(function (){
+Route::get('/annonce', 'AllPostController@index')->name('annonce');
+Route::get('annonce/{post}', 'AllPostController@show')->name('showPost');
 
-    Route::resource('categorie','CategoriePostController');
-    Route::resource('user','UserController');
-    Route::get('/','HomeController@index');
+Route::resource('post', 'PostController');
+Route::resource('contact', 'ContactController');
+
+Route::middleware(['auth', 'IsAdmin'])->namespace('Admin')->prefix('admin')->group(function () {
+
+    Route::resource('categorie', 'CategoriePostController');
+    Route::resource('user', 'UserController');
+    Route::get('/', 'HomeController@index');
 });

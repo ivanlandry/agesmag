@@ -65,7 +65,7 @@
                     </li>
 
                     <li class="nav-item dropdown nav-user">
-                        <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img src="assets/images/avatar-1.jpg" alt="" class="user-avatar-md rounded-circle"></a>
+                        <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img src="{{ asset('assets/images/avatar-1.jpg') }}" alt="" class="user-avatar-md rounded-circle"></a>
                         <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
                             <div class="nav-user-info">
                                 <h5 class="mb-0 text-white nav-user-name">John Abraham </h5>
@@ -99,18 +99,21 @@
                         </li>
 
                         <li class="nav-item">
+                            <a class="nav-link" href="/"><span class="fa fa-user-circle" style="padding-right: 10px;"></span>Dashboard</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('categorie.index') }}">Categories de produits</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="">Produits</a>
+                            <a class="nav-link" href="{{ route('post.index') }}">Produits</a>
                         </li>
 
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('user.index') }}">Utilisateurs</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">Messages</a>
+                            <a class="nav-link" href=""><span class="fa fa-book" style="padding-right: 10px;"></span>Messages</a>
                         </li>
                     </ul>
                 </div>

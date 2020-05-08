@@ -4,7 +4,7 @@
 
     @include('.layouts.partials.header')
 
-    <div class="container">
+    <div class="container" style="padding-right: 50px;">
         <div class="page-breadcrumb">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
@@ -21,7 +21,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-md-offset-3">
-                    <div style="border:2px solid whitesmoke; padding:50px 100px 50px 100px; ">
+                    <div class="box_auth">
                         <h3 align="center"><b>Pas encore menbre?<br>Inscrivez vous grtuitement !</b></h3>
                         <hr>
                         <label for="nom"><b>Nom</b></label>
@@ -47,7 +47,7 @@
                         </div>
                         <label for="phone"><b>Numero de telephone</b></label>
                         <div>
-                        <input class="form-control @error('tel') is-valid @enderror" type="text"  id="tel"
+                        <input class="form-control @error('tel') is-invalid @enderror" type="text"  id="tel"
                                placeholder="numero de telephone" required name="tel">
                             @error('tel')
                             <span class="invalid-feedback" role="alert">

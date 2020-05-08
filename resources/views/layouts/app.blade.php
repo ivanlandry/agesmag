@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="{{ asset('stylesheets/bootstrap.min.css')  }}">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ asset('stylesheets/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/fonts/fontawesome/css/fontawesome-all.css')}}">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('stylesheets/owl.carousel.css')  }}">

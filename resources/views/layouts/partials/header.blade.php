@@ -9,7 +9,7 @@
         <div class="col-md-4">
             <div class="user-menu">
                 <ul>
-                    <li><a href=""><i class="fa fa-search" style="color:blue;"></i> Toutes les offres </a></li>
+                    <li><a href="{{ route('annonce') }}"><i class="fa fa-search" style="color:blue;"></i> Annnonces </a></li>
 
                     <li class="dropdown" >
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#" @click.prevent><i
@@ -42,16 +42,19 @@
             <div class="header-right">
                 <ul class="list-unstyled list-inline">
                     <li class="active">
-                        <button style="height: 45px; width: 300px; background-color:blue; border-radius: 6px;">
+                        <button style="height: 45px; width: 300px; background-color:orange; border-radius: 6px;">
                             <a href="{{ route('post.create')  }}" style=" color: white; text-decoration: none; font-size: 18px;">publier
                                 Votre annonce</a>
                         </button>
                     </li>
-
                 </ul>
             </div>
         </div>
-    </div>
-    <hr>
 
+    </div>
+    @if(!isset($route))
+        <div style="padding-right: 50px;">
+            <hr>
+        </div>
+    @endif
 </div>
