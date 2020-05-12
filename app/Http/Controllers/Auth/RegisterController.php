@@ -78,6 +78,7 @@ class RegisterController extends Controller
 
         $user->roles()->attach($role);
 
+        session()->flash('message','votre compte a bien ete cree');
         return $user;
     }
 }

@@ -9,11 +9,37 @@
             padding-bottom: 10px;
         }
 
-        .box{
-            box-shadow: 0px 3px 18px rgba(0,0,0,0.08);
-            background-color:#fff;
+        .box {
+            box-shadow: 0px 3px 18px rgba(0, 0, 0, 0.08);
+            background-color: #fff;
             padding-bottom: 10px;
+            height: auto;
         }
+
+        .img {
+            width: 50px;
+            height: 50px;
+        }
+
+        h6 {
+            text-align: center;
+            margin: auto;
+            padding-top: 7px;
+            font-weight: bold;
+            font-size: 25px;
+        }
+
+        .single_title {
+            margin: auto;
+            padding-top: 7px;
+            font-weight: bold;
+            font-size: 25px;
+        }
+
+        .button_contact_product{
+            border-radius: 3px; width: 250px;
+        }
+
     </style>
     <div class="container" style="padding-right: 50px;">
         <div class="page-breadcrumb">
@@ -39,31 +65,51 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1 box">
                 <div class="card-title" style="padding-top: 10px;">
-                    <h3>{{ $post->title }}</h3>
+                    <h5 class="single_title">{{ $post->title }}</h5><br>
                 </div>
-                <div class="card-title">
-                    <div class="col-md-7" style="height: auto;">
-                        <div style="text-align: center;  background-color: #f8f8f8;">
-                            <img src="{{ asset('storage/'.$post->img_1) }}" alt="" style="height: 350px; width: 280px;">
+                <div>
+                    <div class="col-md-7">
+                        <div style="text-align: center;  background-color: #f8f8f8;height: 350px;">
+                        <img src="{{ asset('storage/'.$post->img_1) }}" alt="{{ $post->title }}" style="height: 350px;">
                         </div>
                         <br>
                         <div class="col-md-4 col-sm-4 col-lg-4 col-xl-4 col-xs-4"><a href="#"><img
-                                    src="{{ asset('storage/'.$post->img_1) }}" style="width: 50px; height: 50px;"></a>
+                                    src="{{ asset('storage/'.$post->img_1) }}" class="img"></a>
                         </div>
                         <div class="col-md-4  col-sm-4 col-lg-4 col-xl-4  col-xs-4"><a href="#"><img
-                                    src="{{ asset('storage/'.$post->img_2) }}" style="width: 50px; height: 50px;"></a>
+                                    src="{{ asset('storage/'.$post->img_2) }}" class="img"></a>
                         </div>
                         <div class="col-md-4  col-sm-4 col-lg-4 col-xl-4  col-xs-4"><a href="#"><img
-                                    src="{{ asset('storage/'.$post->img_3) }}" style="width: 50px; height: 50px;"></a>
+                                    src="{{ asset('storage/'.$post->img_3) }}" class="img"></a>
+                        </div>
+                        <div style="padding-top: 70px;">
+                            <h4><b> description :</b></h4>
+                            <span>{{ $post->description }}</span>
+                        </div>
+                        <div class="contact_single_product_email" style="display: none;">
+                            <hr>
+                            <br>
+                            <form action="" class="fo">
+                                <h3> <b> Envoyer un message à {{ $post->user->name }} </b></h3>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="nom">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="adresse email">
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="form-control" placeholder="message" style="height: 100px;"></textarea>
+                                </div>
+                                <input type="submit" value="envoyer un message">
+                            </form>
                         </div>
                     </div>
 
-                    <div class="col-md-5">
+                    <div class="col-md-4">
                         <div class="card">
-                            <div class="card-title"><h3
-                                    style="text-align: center; margin: auto; padding-top: 7px;">{{ $post->prix }}
-                                    FCFA</h3></div>
-                            <div class="card-body" style=" background-color: #f8f8f8;">
+                            <div class="card-title"><h6>{{ $post->prix }}
+                                    FCFA</h6></div>
+                            <div class="card-body" style=" background-color: #fbfbfb">
                                 <div class="col-md-6 info_annonce">vendeur</div>
                                 <div class="col-md-6  info_annonce"><b>{{ $post->user->name }}</b></div>
 
@@ -76,22 +122,39 @@
                         </div>
                         <br>
                         <div class="d-flex justify-content-center">
-                            <button type="submit" style="border-radius: 3px; width: 250px;"> <span class="fa fa-phone"></span> afficher le telephone
+                            <button type="submit" class="button_contact_product" id="button_contact_product_phone"><span
+                                    class="fa fa-phone"></span> afficher le telephone
                             </button>
                         </div>
                         <br>
                         <div class="d-flex justify-content-center">
-                            <button type="submit" style="border-radius: 3px; width: 250px;"> <span class="fa fa-envelope"></span> contacter par mail
+                            <button type="submit" class="button_contact_product" id="button_contact_product_email"><span
+                                    class="fa fa-envelope"></span> contacter par mail
                             </button>
                         </div>
 
                     </div>
                 </div>
+
+
             </div>
         </div>
     </div>
 
     <br><br>
     @include('layouts.partials.footer')
+    <script>
+        $(function(){
+            $('#button_contact_product_email').on('click',function(event) {
+                event.preventDefault();
+                $('.contact_single_product_email').show();
+            });
+
+            $('#button_contact_product_phone').on('click',function(event) {
+                event.preventDefault();
+
+            });
+        });
+    </script>
 @endsection
 

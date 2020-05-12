@@ -25,7 +25,7 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        se deconnecter
                                     </a>
                                     <form id="logout-form" method="POST" action="{{ route('logout')  }}" style="display: none;">
                                         @csrf

@@ -40,6 +40,8 @@ class LoginController extends Controller
 
     protected function redirectTo(){
 
+        session()->flash('message','vous etes maintenant connecte.');
+
         if(Auth::user()->roles()->pluck('name')->contains('admin')){
 
             return RouteServiceProvider::ADMIN;
