@@ -27,7 +27,6 @@
                     <table class="table">
                         <thead class="bg-light">
                         <tr class="border-0">
-                            <th class="border-0">#</th>
                             <th class="border-0">Image</th>
                             <th class="border-0">Titre du produit</th>
                             <th class="border-0">Prix</th>
@@ -40,18 +39,33 @@
                         <tbody>
                         @foreach($posts as $post)
                             <tr>
-                                <td>{{$post->id}}</td>
                                 <td>
-                                    <div class="m-r-10"><img src="{{ asset('storage/'.$post->img_1) }}" alt="user" class="rounded" width="45"></div>
+                                    <div class="m-r-10"><img src="{{ asset('storage/'.$post->img_1) }}" alt="user"
+                                                             class="rounded" width="45"></div>
                                 </td>
                                 <td>{{ $post->title }} </td>
                                 <td>{{ $post->prix }} </td>
-                                <td>{{ $post->description }}</td>
+                                <td>{{ substr( $post->description , 0 , 20)."..."  }}</td>
                                 <td>{{ $post->created_at }}</td>
                                 <td>{{ $post->etat }}</td>
                                 <td>
-                                    <button class="btn btn-danger"><a href="#" style="color:white; text-decoration: none;" class="fa fa-trash"></a></button>
-                                    <button class="btn btn-success"><a href="{{ route('post.show',$post) }}" style="color:white; text-decoration: none;" class="fa fa-eye"></a></button>
+                                    <button class="btn btn-danger"><a href="{{ route('post.destroy',$post) }}"
+                                                                      style="color:white; text-decoration: none;"
+                                                                      class="fa fa-trash"></a></button>
+                                    <button class="btn btn-success"><a href="{{ route('post.show',$post) }}"
+                                                                       style="color:white; text-decoration: none;"
+                                                                       class="fa fa-eye"></a></button>
+                                    @if($post->etat==0)
+                                        <a href="{{ route('valider',[$post,$post->user]) }}"
+                                           style="color:white; text-decoration: none;"
+                                           class="btn btn-primary">valider</a>
+                                        <a href="{{ route('rejeter',[$post,$post->user]) }}"
+                                           style="color:white; text-decoration: none;"
+                                           class="btn btn-primary">rejeter</a>
+                                    @else
+                                        <a href=""
+                                           style="color:white; text-decoration: none;" class="btn btn-primary">desactiver</a>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach

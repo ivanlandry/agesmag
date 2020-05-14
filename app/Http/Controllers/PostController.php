@@ -23,16 +23,19 @@ class PostController extends Controller
 
     public function index()
     {
-        $posts = Post::latest()->paginate(10);
+        $posts = Post::orderBy('etat', 'asc')->orderBy('created_at', 'desc')->latest()->paginate(10);
 
-        return view('admin.list_posts',compact('posts'));
+        return view('admin.list_posts', compact('posts'));
     }
+
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function create()
     {
         $categories = CategoriePost::all();
@@ -92,7 +95,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return view('admin.show_post',compact('post'));
+        return view('admin.show_post', compact('post'));
     }
 
     /**
@@ -126,6 +129,6 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        dd($post);
     }
 }

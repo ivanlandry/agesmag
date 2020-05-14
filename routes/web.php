@@ -22,6 +22,7 @@ Route::get('/annonce', 'AllPostController@index')->name('annonce');
 Route::get('annonce/{post}', 'AllPostController@show')->name('showPost');
 
 Route::resource('post', 'PostController');
+
 Route::resource('contact', 'ContactController');
 
 Route::middleware(['auth', 'IsAdmin'])->namespace('Admin')->prefix('admin')->group(function () {
@@ -29,4 +30,6 @@ Route::middleware(['auth', 'IsAdmin'])->namespace('Admin')->prefix('admin')->gro
     Route::resource('categorie', 'CategoriePostController');
     Route::resource('user', 'UserController');
     Route::get('/', 'HomeController@index');
+    Route::get('valider/{post}/{user_id}','PostActionController@valider')->name('valider');
+    Route::get('rejeter/{post}/{user_id}','PostActionController@rejeter')->name('rejeter');
 });
