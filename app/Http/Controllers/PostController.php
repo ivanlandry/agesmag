@@ -21,9 +21,15 @@ class PostController extends Controller
         $this->middleware('auth')->except(['create', 'store']);
     }
 
+    private function getPost(){
+
+        return Post::orderBy('etat', 'asc')->orderBy('created_at', 'desc')->latest()->paginate(10);
+    }
+
+
     public function index()
     {
-        $posts = Post::orderBy('etat', 'asc')->orderBy('created_at', 'desc')->latest()->paginate(10);
+        $posts = $this->getPost();
 
         return view('admin.list_posts', compact('posts'));
     }
@@ -34,7 +40,6 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
 
     public function create()
     {
@@ -118,7 +123,7 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+
     }
 
     /**
@@ -129,6 +134,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        dd($post);
+        Post::destroy($post->id);
+
+        return redirect()->route('post.index', [$this->getPost()]);
     }
 }
