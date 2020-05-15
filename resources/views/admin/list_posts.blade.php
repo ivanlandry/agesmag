@@ -53,22 +53,23 @@
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-danger fa fa-trash" type="submit"></button>
+                                        <button class="btn btn-success"><a href="{{ route('post.show',$post) }}"
+                                                                           style="color:white; text-decoration: none;"
+                                                                           class="fa fa-eye"></a></button>
+                                        @if($post->etat==0)
+                                            <a href="{{ route('valider',[$post,$post->user]) }}"
+                                               style="color:white; text-decoration: none;"
+                                               class="btn btn-primary">valider</a>
+                                            <a href="{{ route('rejeter',[$post,$post->user]) }}"
+                                               style="color:white; text-decoration: none;"
+                                               class="btn btn-primary">rejeter</a>
+                                        @else
+                                            <a href=""
+                                               style="color:white; text-decoration: none;" class="btn btn-primary">desactiver</a>
+                                        @endif
                                     </form>
 
-                                    <button class="btn btn-success"><a href="{{ route('post.show',$post) }}"
-                                                                       style="color:white; text-decoration: none;"
-                                                                       class="fa fa-eye"></a></button>
-                                    @if($post->etat==0)
-                                        <a href="{{ route('valider',[$post,$post->user]) }}"
-                                           style="color:white; text-decoration: none;"
-                                           class="btn btn-primary">valider</a>
-                                        <a href="{{ route('rejeter',[$post,$post->user]) }}"
-                                           style="color:white; text-decoration: none;"
-                                           class="btn btn-primary">rejeter</a>
-                                    @else
-                                        <a href=""
-                                           style="color:white; text-decoration: none;" class="btn btn-primary">desactiver</a>
-                                    @endif
+
                                 </td>
                             </tr>
                         @endforeach

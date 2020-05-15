@@ -36,8 +36,9 @@
             font-size: 25px;
         }
 
-        .button_contact_product{
-            border-radius: 3px; width: 250px;
+        .button_contact_product {
+            border-radius: 3px;
+            width: 250px;
         }
 
     </style>
@@ -61,6 +62,15 @@
     </div>
 
 
+    @if(session()->has('message'))
+
+        <div class="container">
+            <div class="alert alert-success text-center col-md-10 col-md-offset-1">
+                <span>{{ session()->get('message') }}</span>
+            </div>
+        </div>
+    @endif
+
     <div class="container">
         <div class="row">
             <div class="col-md-10 col-md-offset-1 box">
@@ -70,7 +80,8 @@
                 <div>
                     <div class="col-md-7">
                         <div style="text-align: center;  background-color: #f8f8f8;height: 350px;">
-                        <img src="{{ asset('storage/'.$post->img_1) }}" alt="{{ $post->title }}" style="height: 350px;">
+                            <img src="{{ asset('storage/'.$post->img_1) }}" alt="{{ $post->title }}"
+                                 style="height: 350px;">
                         </div>
                         <br>
                         <div class="col-md-4 col-sm-4 col-lg-4 col-xl-4 col-xs-4"><a href="#"><img
@@ -89,17 +100,28 @@
                         <div class="contact_single_product_email" style="display: none;">
                             <hr>
                             <br>
-                            <form action="" class="fo">
-                                <h3> <b> Envoyer un message à {{ $post->user->name }} </b></h3>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="nom">
+                            <form action="{{ route('message_email') }}" method="POST">
+                                @csrf
+                                <h3><b> Envoyer un message à {{ $post->user->name }} </b></h3>
+
+                                @guest
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="nom" name="nom">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" placeholder="adresse email"
+                                               name="email">
+                                    </div>
+                                @endguest
+
+                                <div class="form-group" style="display: none;">
+                                    <input type="text" value="{{ $post->user->email }}" name="email_destinataire">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="adresse email">
+                                    <textarea class="form-control" placeholder="message"
+                                              style="height: 100px;" name="message"></textarea>
                                 </div>
-                                <div class="form-group">
-                                    <textarea class="form-control" placeholder="message" style="height: 100px;"></textarea>
-                                </div>
+
                                 <input type="submit" value="envoyer un message">
                             </form>
                         </div>
@@ -143,18 +165,22 @@
 
     <br><br>
     @include('layouts.partials.footer')
+
     <script>
-        $(function(){
-            $('#button_contact_product_email').on('click',function(event) {
+
+        $(function () {
+
+            $('#button_contact_product_email').on('click', function (event) {
                 event.preventDefault();
                 $('.contact_single_product_email').show();
             });
 
-            $('#button_contact_product_phone').on('click',function(event) {
+            $('#button_contact_product_phone').on('click', function (event) {
                 event.preventDefault();
 
             });
         });
+
     </script>
 @endsection
 

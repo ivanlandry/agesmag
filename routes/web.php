@@ -21,6 +21,9 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/annonce', 'AllPostController@index')->name('annonce');
 Route::get('annonce/{post}', 'AllPostController@show')->name('showPost');
 
+
+Route::post('message','MessageController@sendEmail')->name("message_email");
+
 Route::resource('post', 'PostController');
 
 Route::resource('contact', 'ContactController');
