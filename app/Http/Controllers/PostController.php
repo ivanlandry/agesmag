@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\CategoriePost;
 use App\Post;
+use App\User;
 use App\Ville;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -21,7 +24,8 @@ class PostController extends Controller
         $this->middleware('auth')->except(['create', 'store']);
     }
 
-    private function getPost(){
+    private function getPost()
+    {
 
         return Post::orderBy('etat', 'asc')->orderBy('created_at', 'desc')->latest()->paginate(10);
     }
@@ -68,8 +72,19 @@ class PostController extends Controller
             'img_3' => 'required|image|max:5000',
         ]);
 
+        $user = "";
 
-        $user = Auth::user();
+        if (Auth::user()) {
+            $user = Auth::user();
+        } else {
+            $data_user['name'] = $request->input('nom');
+            $data_user['email'] = $request->input('email');
+            $data_user['tel'] = $request->input('tel');
+            $data_user['password'] = Hash::make($request->input('password'));
+
+            $user = User::create($data_user);
+        }
+
 
         $data['categorie_id'] = CategoriePost::where('title', $request->input('categorie'))->first()->id;
         $data['ville_id'] = Ville::where('title', $request->input('ville'))->first()->id;
@@ -77,6 +92,10 @@ class PostController extends Controller
         $post = $user->posts()->create($data);
 
         $this->storeImage($post);
+
+        session()->flash('message', 'votre annonce a bien été posté');
+
+        return redirect()->route("post.create");
     }
 
 
@@ -135,6 +154,10 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         Post::destroy($post->id);
+
+       /* Storage::delete('public/posts/' . $post->img_1);
+        Storage::delete('public/posts/' . $post->img_2);
+        Storage::delete('public/posts/' . $post->img_3);  */
 
         return redirect()->route('post.index', [$this->getPost()]);
     }

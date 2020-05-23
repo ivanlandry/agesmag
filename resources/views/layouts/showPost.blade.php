@@ -19,6 +19,7 @@
         .img {
             width: 50px;
             height: 50px;
+            cursor: pointer;
         }
 
         h6 {
@@ -52,8 +53,9 @@
                                                                               class="breadcrumb-link"
                                                                               style="text-decoration: none;">Toutes les
                             annonces</a></li>
-                    <li class="breadcrumb-item active" aria-current="page"><a href="/" class="breadcrumb-link"
-                                                                              style="text-decoration: none;">{{ $post->categorie->title }}</a>
+                    <li class="breadcrumb-item active" aria-current="page"><a
+                            href="{{ route('annonce_categorie',$post->categorie->id) }}" class="breadcrumb-link"
+                            style="text-decoration: none;">{{ $post->categorie->title }}</a>
                     </li>
                 </ol>
             </nav>
@@ -81,17 +83,18 @@
                     <div class="col-md-7">
                         <div style="text-align: center;  background-color: #f8f8f8;height: 350px;">
                             <img src="{{ asset('storage/'.$post->img_1) }}" alt="{{ $post->title }}"
-                                 style="height: 350px;">
+                                 style="height: 350px;" id="image_active">
                         </div>
                         <br>
-                        <div class="col-md-4 col-sm-4 col-lg-4 col-xl-4 col-xs-4"><a href="#"><img
-                                    src="{{ asset('storage/'.$post->img_1) }}" class="img"></a>
+                        <div class="col-md-4 col-sm-4 col-lg-4 col-xl-4 col-xs-4">
+                            <img style="border: 2px solid blue; opacity: 0.5;"
+                                 src="{{ asset('storage/'.$post->img_1) }}" class="img">
                         </div>
-                        <div class="col-md-4  col-sm-4 col-lg-4 col-xl-4  col-xs-4"><a href="#"><img
-                                    src="{{ asset('storage/'.$post->img_2) }}" class="img"></a>
+                        <div class="col-md-4  col-sm-4 col-lg-4 col-xl-4  col-xs-4">
+                            <img src="{{ asset('storage/'.$post->img_2) }}" class="img">
                         </div>
-                        <div class="col-md-4  col-sm-4 col-lg-4 col-xl-4  col-xs-4"><a href="#"><img
-                                    src="{{ asset('storage/'.$post->img_3) }}" class="img"></a>
+                        <div class="col-md-4  col-sm-4 col-lg-4 col-xl-4  col-xs-4">
+                            <img src="{{ asset('storage/'.$post->img_3) }}" class="img">
                         </div>
                         <div style="padding-top: 70px;">
                             <h4><b> description :</b></h4>
@@ -177,7 +180,22 @@
 
             $('#button_contact_product_phone').on('click', function (event) {
                 event.preventDefault();
+            });
 
+            $('.img').click(function (event) {
+
+
+                $('.img').css({
+                    border: 'none',
+                    opacity: '1'
+                });
+
+                $('#image_active').attr('src', $(this).attr('src'));
+
+                $(this).css({
+                    border: '2px solid blue',
+                    opacity: '0.5'
+                });
             });
         });
 

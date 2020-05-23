@@ -44,6 +44,17 @@
                 </nav>
             </div>
         </div>
+
+        @if(session()->has('message'))
+
+            <div class="container">
+                <div class="alert alert-success text-center col-md-10 col-md-offset-1">
+                    <span>{{ session()->get('message') }}</span>
+                </div>
+            </div>
+        @endif
+
+
         <div class="container">
             <div class="row">
                 <br>

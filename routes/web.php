@@ -19,6 +19,8 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/annonce', 'AllPostController@index')->name('annonce');
+Route::get('categorie/{categorie}', 'AllPostController@all_post_categorie')->name('annonce_categorie');
+
 Route::get('annonce/{post}', 'AllPostController@show')->name('showPost');
 
 

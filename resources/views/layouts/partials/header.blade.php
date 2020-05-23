@@ -20,7 +20,9 @@
                                 <li><a href="{{ route('login')  }}" class="dropdown-item"> se connecter </a></li>
                                 <li><a href="{{ route('register')  }}" class="dropdown-item"> creer un compte </a></li>
                             @else
-                                <li><a href="{{ route('login')  }}" class="dropdown-item"> parametres</a></li>
+                                <li><a href="#" class="dropdown-item"> mes annonces </a></li>
+                                <li><a href="#" class="dropdown-item"> parametres</a></li>
+                                <hr>
                                 <li>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
