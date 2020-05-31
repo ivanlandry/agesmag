@@ -99,7 +99,7 @@ z-index: 999;}
 }
 .logo h1 a:hover {text-decoration: none;opacity: .7}
 .logo h1 a span {
-    color: blue;
+    color: #0A6EAD;
 }
 .shopping-item {
     border: 1px solid #ddd;
@@ -307,7 +307,7 @@ z-index: 999;}
   color: #fff;
   width: 28px;
   height: 28px;
-  background-color: blue;
+  background-color: #0A6EAD;
   border-radius: 90%;
   text-align: center;
   line-height: 26px;
@@ -555,7 +555,7 @@ padding: 35px 0 50px;}
 
 .footer-bottom-area {background: #000;color: #fff}
 .footer-about-us span {
-  color: blue;
+  color: #0A6EAD;
 }
 .footer-wid-title {
   font-family: raleway;
@@ -588,19 +588,19 @@ padding: 35px 0 50px;}
     width: 100%;
 }
 .newsletter-form input[type="submit"] {
-    background: none repeat scroll 0 0 blue;
+    background: none repeat scroll 0 0 #0A6EAD;
     border: medium none;
     color: #fff;
     display: inline-block;
     font-size: 18px;
     padding: 7px 20px;
-    text-transform: uppercase;border: 1px solid blue;
+    text-transform: uppercase;border: 1px solid #0A6EAD;
 }
 .newsletter-form input[type="submit"]:hover {background: #222;border-color: #666}
 .newsletter-form {
     margin-top: 25px;
 }
-a {color: blue}
+a {color: #0A6EAD}
 a:hover, a:focus {color: #17a78b}
 .footer-bottom-area {
   background: none repeat scroll 0 0 #000;
@@ -1086,4 +1086,12 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button{background
 
 .pagination > li > a, .pagination > li > span {
   color: #5a88ca;
+}
+
+
+@media screen and (max-width: 700px) {
+
+    #form_search{
+        height: auto;
+    }
 }

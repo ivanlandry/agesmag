@@ -9,19 +9,19 @@
         <div class="col-md-4">
             <div class="user-menu">
                 <ul>
-                    <li><a href="{{ route('annonce') }}"><i class="fa fa-search" style="color:blue;"></i> Annnonces </a></li>
+                    <li><a href="{{ route('annonce') }}"><i class="fa fa-search" style="color:#0A6EAD;"></i> Annnonces </a></li>
 
                     <li class="dropdown" >
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#" @click.prevent><i
-                                class="fa fa-user" style="color:blue;"></i> Mon compte </a>
+                                class="fa fa-user" style="color:#0A6EAD;"></i> Mon compte </a>
                         <ul class="dropdown-menu">
 
                             @guest
                                 <li><a href="{{ route('login')  }}" class="dropdown-item"> se connecter </a></li>
                                 <li><a href="{{ route('register')  }}" class="dropdown-item"> creer un compte </a></li>
                             @else
-                                <li><a href="#" class="dropdown-item"> mes annonces </a></li>
-                                <li><a href="#" class="dropdown-item"> parametres</a></li>
+                                <li><a href="{{ route('mes-annonces') }}" class="dropdown-item"> mes annonces </a></li>
+                                <li><a href="{{ route('mes-annonces') }}" class="dropdown-item"> parametres</a></li>
                                 <hr>
                                 <li>
                                     <a class="dropdown-item" href="{{ route('logout') }}"

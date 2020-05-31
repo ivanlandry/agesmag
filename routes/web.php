@@ -23,8 +23,11 @@ Route::get('categorie/{categorie}', 'AllPostController@all_post_categorie')->nam
 
 Route::get('annonce/{post}', 'AllPostController@show')->name('showPost');
 
+Route::get('mes-annonces/','MonCompteController@mes_annonces')->name('mes-annonces');;
 
 Route::post('message','MessageController@sendEmail')->name("message_email");
+
+Route::post('search/','SearchController')->name('search');
 
 Route::resource('post', 'PostController');
 
@@ -34,7 +37,7 @@ Route::middleware(['auth', 'IsAdmin'])->namespace('Admin')->prefix('admin')->gro
 
     Route::resource('categorie', 'CategoriePostController');
     Route::resource('user', 'UserController');
-    Route::get('/', 'HomeController@index');
+    Route::get('dashboard/', 'HomeController@index')->name('dashboard');
     Route::get('valider/{post}/{user_id}','PostActionController@valider')->name('valider');
     Route::get('rejeter/{post}/{user_id}','PostActionController@rejeter')->name('rejeter');
 });

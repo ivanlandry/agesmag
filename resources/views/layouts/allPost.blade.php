@@ -4,30 +4,32 @@
 
     @include('layouts.partials.header')
 
-    <div class="container" style="padding-left: 30px; padding-right: 70px; padding-top: 0; ">
-        <form action="" class="form-horizontal row bg-primary text-black" style="padding-top: 1px; height: 48px;"
-              id="form_search">
+    <div class="container" style=" padding-top: 0;padding-right: 60px;">
+        <form action="" class=" row  text-black">
+            @csrf
             <div class="col-md-3">
                 <input type="text" placeholder="Que cherchez vous?" class="form-control">
             </div>
-            <div class="col-md-3" style="padding-top: 5px;">
-                <select name="categorie" id="" class="form-control">
+            <div class="col-md-3" style="padding-top: 6px;">
+                <select name="categorie_search" id="categorie_search" class="form-control">
                     <option value="Toutes categories">Toutes categories</option>
                     @foreach($categories as $categorie)
-                        <option value="{{ $categorie->title }}">{{ $categorie->title }}</option>
+                        <option value="{{ $categorie->id }}">{{ $categorie->title }}</option>
                     @endforeach
                 </select>
             </div>
-            <div class="col-md-3" style="padding-top: 5px;">
-                <select name="ville" id="" class="form-control">
+            <div class="col-md-3" style="padding-top: 6px;">
+                <select name="ville_search" id="ville_search" class="form-control">
                     <option value="Choisir une ville">Choisir une ville</option>
                     @foreach($villes as $ville)
-                        <option value="{{ $ville->title }}">{{ $ville->title }}</option>
+                        <option value="{{ $ville->id }}">{{ $ville->title }}</option>
                     @endforeach
                 </select>
             </div>
-            <div class="col-md-3" style="padding-top: 5px;">
-                <button type="submit" class="bg-light" style=" color: blue; height:35px;">rechercher
+            <div class="col-md-3" style="padding-top: 6px;">
+                <button class=" fa fa-search" type="submit" class="bg-light"
+                        style=" text-transform:capitalize; color: #0A6EAD; height:35px; background: #dddddd; border-radius: 2px; ">
+                    rechercher
                 </button>
             </div>
         </form>
@@ -48,7 +50,7 @@
     </div>
 
     <div class="product-widget-area">
-        <div class="zigzag-bottom"></div>
+
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
@@ -100,5 +102,49 @@
     </div>
 
     @include('layouts.partials.footer')
+
+    <script language="javascript">
+
+        $(function () {
+
+            $.ajaxSetup({
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
+            });
+
+            $('#categorie_search,#ville_search').change(function () {
+
+                if ($(this).attr('id') == 'categorie_search') {
+
+                    $.ajax({
+                        method: 'POST',
+                        url: '{{ route("search") }}',
+                        data: {
+                            type: 'categorie',
+                            val: $(this).val()
+                        },
+                        dataType: 'json'
+                    }).done((data) => {
+                        console.log(data)
+                    }).fail((error) => {
+                        console.log(error)
+                    });
+                } else {
+                    $.ajax({
+                        method: 'POST',
+                        url: '{{ route("search") }}',
+                        data: {
+                            type: 'ville',
+                            val: $(this).val()
+                        },
+                        dataType: 'json'
+                    }).done((data) => {
+                        console.log(data)
+                    }).fail((error) => {
+                        console.log(error)
+                    });
+                }
+            });
+        });
+    </script>
 @endsection
 
