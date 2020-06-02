@@ -4,16 +4,7 @@
 
 @section('content')
 
-    <div class="container" style="padding-right: 50px;">
-        <div class="page-breadcrumb">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/" class="breadcrumb-link">Accueil</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">se connecter</li>
-                </ol>
-            </nav>
-        </div>
-    </div>
+@include('layouts.partials.banner',['title'=>'se connecter'])
 
     <div>
         <form method="POST" action="{{ route('login') }}">

@@ -34,16 +34,7 @@
     </style>
 
     <div>
-        <div class="container" style="padding-right: 50px;">
-            <div class="page-breadcrumb">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/" class="breadcrumb-link">Accueil</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">nouvelle annonce</li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
+        @include('layouts.partials.banner',['title'=>'nouvelle annonce'])
 
         @if(session()->has('message'))
 

@@ -35,7 +35,7 @@ Route::resource('contact', 'ContactController');
 
 Route::middleware(['auth', 'IsAdmin'])->namespace('Admin')->prefix('admin')->group(function () {
 
-    Route::resource('categorie', 'CategoriePostController');
+    Route::resource('categorie', 'CategorieController');
     Route::resource('user', 'UserController');
     Route::get('dashboard/', 'HomeController@index')->name('dashboard');
     Route::get('valider/{post}/{user_id}','PostActionController@valider')->name('valider');

@@ -42,11 +42,6 @@ class LoginController extends Controller
 
         session()->flash('message','vous etes maintenant connecte.');
 
-        if(Auth::user()->roles()->pluck('name')->contains('admin')){
-
-            return RouteServiceProvider::ADMIN;
-        }else{
-            return RouteServiceProvider::HOME;
-        }
+        return Auth::user()->roles()->pluck('name')->contains('admin') ? RouteServiceProvider::ADMIN : RouteServiceProvider::HOME;
     }
 }

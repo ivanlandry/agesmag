@@ -4,16 +4,7 @@
 
     @include('.layouts.partials.header')
 
-    <div class="container" style="padding-right: 50px;">
-        <div class="page-breadcrumb">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/" class="breadcrumb-link">Accueil</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">creer un compte</li>
-                </ol>
-            </nav>
-        </div>
-    </div>
+    @include('layouts.partials.banner',['title'=>'creer un compte'])
 
     <form method="POST" action="{{ route('register') }}">
 

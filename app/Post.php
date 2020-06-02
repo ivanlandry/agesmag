@@ -9,7 +9,7 @@ class Post extends Model
     protected $guarded=[];
 
     public function categorie(){
-        return $this->belongsTo('App\CategoriePost');
+        return $this->belongsTo('App\Categorie');
     }
 
     public function ville(){

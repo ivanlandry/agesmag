@@ -4,48 +4,9 @@
 
     @include('layouts.partials.header')
 
-    <div class="container" style="padding-left: 30px; padding-right: 70px; padding-top: 0; ">
-        <form action="" class="form-horizontal row bg-primary text-black" style="padding-top: 1px; height: 48px;"
-              id="form_search">
-            <div class="col-md-3">
-                <input type="text" placeholder="Que cherchez vous?" class="form-control">
-            </div>
-            <div class="col-md-3" style="padding-top: 5px;">
-                <select name="categorie" id="" class="form-control">
-                    <option value="Toutes categories">Toutes categories</option>
-                    @foreach($categories as $categorie)
-                        <option value="{{ $categorie->title }}">{{ $categorie->title }}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="col-md-3" style="padding-top: 5px;">
-                <select name="ville" id="" class="form-control">
-                    <option value="Choisir une ville">Choisir une ville</option>
-                    @foreach($villes as $ville)
-                        <option value="{{ $ville->title }}">{{ $ville->title }}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="col-md-3" style="padding-top: 5px;">
-                <button type="submit" class="bg-light" style=" color: blue; height:35px;">rechercher
-                </button>
-            </div>
-        </form>
-    </div>
+    @include('layouts.partials.search_bar')
 
-    <div class="container" style="padding-right: 50px;">
-        <div class="page-breadcrumb">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/" class="breadcrumb-link">Accueil</a></li>
-                    <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('annonce') }}">Toutes les
-                            annonces</a></li>
-                </ol>
-            </nav>
-            <hr>
-        </div>
-
-    </div>
+    @include('layouts.partials.banner',['title'=>'toutes les annonces','route'=>$route])
 
     <div class="product-widget-area">
         <div class="zigzag-bottom"></div>

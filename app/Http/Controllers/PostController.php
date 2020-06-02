@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\CategoriePost;
+use App\Categorie;
 use App\Post;
 use App\User;
 use App\Ville;
@@ -47,7 +47,7 @@ class PostController extends Controller
 
     public function create()
     {
-        $categories = CategoriePost::all();
+        $categories = Categorie::all();
         $villes = Ville::orderBy('title', 'asc')->get();
 
         return view('layouts.newPost', compact('categories', 'villes'));
@@ -86,11 +86,12 @@ class PostController extends Controller
         }
 
 
-        $data['categorie_id'] = CategoriePost::where('title', $request->input('categorie'))->first()->id;
-        $data['ville_id'] = Ville::where('title', $request->input('ville'))->first()->id;
+        $categorie = Categorie::where('title', $request->input('categorie'))->first()->id;
+        $ville = Ville::where('title', $request->input('ville'))->first()->id;
 
         $post = $user->posts()->create($data);
-
+        $post->categorie()->associate($categorie);
+        $post->ville()->associate($ville);
         $this->storeImage($post);
 
         session()->flash('message', 'votre annonce a bien été posté');
