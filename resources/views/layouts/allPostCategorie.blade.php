@@ -18,7 +18,7 @@
                         <ul class="list-group list-group-flush">
                             @foreach($categories as $categorie)
                                 <li class="list-group-item"><a href="{{ route('annonce_categorie',$categorie->id) }}"
-                                                               style="text-decoration: none;">{{ $categorie->title }}</a>
+                                                               style="text-decoration: none;">{{ $categorie->title }}  ({{count($categorie->posts)}})</a>
                                 </li>
                             @endforeach
                         </ul>

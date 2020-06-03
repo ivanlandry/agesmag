@@ -167,6 +167,40 @@
     </div>
 
     <br><br>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1 box">
+
+                <div class="card-title" style="padding-top: 10px;">
+                    <b>Annonces recommandées</b><br>
+                </div>
+
+                @foreach($post_recommande as $p)
+
+                    <div class="col-md-3">
+
+                        <a href="{{ route('showPost',$p) }}">
+                            <img style="height: 150px; width: 100%;"
+                                 src="{{ asset('storage/'.$p->img_1) }}">
+                        </a>
+                        <br>
+
+                        <b><a href="{{ route('showPost',$p) }}" style="text-decoration: none;">{{ $p->title }}</a></b><br>
+                        <b>{{ $p->prix }} FCFA</b>
+                    </div>
+
+                @endforeach
+
+            </div>
+        </div>
+    </div>
+    </div>
+    <br>
+
+    <h6>Qu'avez-vous à vendre ?</h6>
+    <br><br>
+
     @include('layouts.partials.footer')
 
     <script>

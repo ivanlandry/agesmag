@@ -48,8 +48,8 @@ class AllPostController extends Controller
 
     public function show(Post $post)
     {
-
-        return view('layouts.showPost', compact('post'));
+        $post_recommande=Categorie::find($post->categorie->id)->posts;
+        return view('layouts.showPost', compact('post','post_recommande'));
     }
 
 
