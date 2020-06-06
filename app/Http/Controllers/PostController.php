@@ -48,9 +48,8 @@ class PostController extends Controller
     public function create()
     {
         $categories = Categorie::all();
-        $villes = Ville::orderBy('title', 'asc')->get();
 
-        return view('layouts.newPost', compact('categories', 'villes'));
+        return view('layouts.newPost', compact('categories'));
     }
 
     /**
@@ -70,6 +69,7 @@ class PostController extends Controller
             'img_1' => 'required|image|max:5000',
             'img_2' => 'required|image|max:5000',
             'img_3' => 'required|image|max:5000',
+            'ville'=>'required'
         ]);
 
         $user = "";
@@ -87,11 +87,9 @@ class PostController extends Controller
 
 
         $categorie = Categorie::where('title', $request->input('categorie'))->first()->id;
-        $ville = Ville::where('title', $request->input('ville'))->first()->id;
 
         $post = $user->posts()->create($data);
         $post->categorie()->associate($categorie);
-        $post->ville()->associate($ville);
         $this->storeImage($post);
 
         session()->flash('message', 'votre annonce a bien été posté');
@@ -160,6 +158,6 @@ class PostController extends Controller
         Storage::delete('public/posts/' . $post->img_2);
         Storage::delete('public/posts/' . $post->img_3);  */
 
-        return redirect()->route('post.index', [$this->getPost()]);
+        return redirect()->back();
     }
 }

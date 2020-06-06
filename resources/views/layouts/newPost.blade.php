@@ -66,12 +66,13 @@
 
                               <div>
                                   <label for="">choississez une ville *</label>
-                                  <select name="ville" id="" class="form-control">
-                                      <option value="choisi">choisir la ville</option>
-                                      @foreach($villes as $ville)
-                                          <option value="{{ $ville->title }}">{{ $ville->title }}</option>
-                                      @endforeach
-                                  </select>
+
+                                  <input id="autocomplete" name="ville"
+                                         placeholder="Enter your address"
+                                         onFocus="geolocate()"
+                                         type="text" class="form-control"/>
+
+
                               </div>
                               <br>
                               <div>
@@ -203,5 +204,60 @@
     </div>
     <br>
     @include('layouts.partials.footer')
+
+
+
+    <script>
+        var placeSearch, autocomplete;
+
+
+        function initAutocomplete() {
+            // Create the autocomplete object, restricting the search predictions to
+            // geographical location types.
+            autocomplete = new google.maps.places.Autocomplete(
+                document.getElementById('autocomplete'), {types: ['geocode']});
+
+            // Avoid paying for data that you don't need by restricting the set of
+            // place fields that are returned to just the address components.
+            autocomplete.setFields(['address_component']);
+
+            // When the user selects an address from the drop-down, populate the
+            // address fields in the form.
+            autocomplete.addListener('place_changed', fillInAddress);
+
+
+        }
+
+        function fillInAddress() {
+
+            var place = autocomplete.getPlace();
+
+        }
+
+
+        function de(){
+
+            console.log(document.getElementById('autocomplete').value);
+        }
+
+        function geolocate() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var geolocation = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+
+                    d=geolocation;
+
+                    var circle = new google.maps.Circle(
+                        {center: geolocation, radius: position.coords.accuracy});
+                    autocomplete.setBounds(circle.getBounds());
+
+                });
+            }
+
+        }
+    </script>
 
 @endsection

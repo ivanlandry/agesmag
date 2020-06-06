@@ -38,7 +38,7 @@
                                             class="product-thumb"></a>
                                     <h2><a href="{{ route('showPost',$post) }}">{{ $post->title }}</a></h2>
                                     <div class="product-wid-rating">
-                                        {{ $post->ville->title }}
+                                        {{ $post->ville }}
                                     </div>
                                     <div class="product-wid-price">
                                         <ins>{{ $post->prix  }}fcfa</ins>

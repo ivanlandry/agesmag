@@ -42,6 +42,10 @@
             width: 250px;
         }
 
+        #map {
+            height: 400px; /* The height is 400 pixels */
+        }
+
     </style>
     <div class="container" style="padding-right: 50px;">
         <div class="page-breadcrumb">
@@ -139,7 +143,7 @@
                                 <div class="col-md-6  info_annonce"><b>{{ $post->user->name }}</b></div>
 
                                 <div class="col-md-6  info_annonce">lieu</div>
-                                <div class="col-md-6  info_annonce"><b>{{ $post->ville->title }}</b></div>
+                                <div class="col-md-6  info_annonce"><b>{{ $post->ville }}</b></div>
 
                                 <div class="col-md-6  info_annonce">publie</div>
                                 <div class="col-md-6  info_annonce"><b>{{ $post->created_at }}</b></div>
@@ -160,8 +164,12 @@
 
                     </div>
                 </div>
+            </div>
+            <br>
+            <div class="col-md-10 col-md-offset-1" style="padding-top: 20px;">
+                <div id="map">
 
-
+                </div>
             </div>
         </div>
     </div>
@@ -186,7 +194,8 @@
                         </a>
                         <br>
 
-                        <b><a href="{{ route('showPost',$p) }}" style="text-decoration: none;">{{ $p->title }}</a></b><br>
+                        <b><a href="{{ route('showPost',$p) }}"
+                              style="text-decoration: none;">{{ $p->title }}</a></b><br>
                         <b>{{ $p->prix }} FCFA</b>
                     </div>
 
@@ -201,9 +210,29 @@
     <h6>Qu'avez-vous à vendre ?</h6>
     <br><br>
 
+
+
     @include('layouts.partials.footer')
+    
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKfKWQQf9yv02PAZZHSOyHvXzHQ5jLOKI&callback=initMap">
+    </script>
 
     <script>
+
+
+        geocode();
+
+
+        function initMap() {
+            // The location of Uluru
+            var uluru = {lat: 5.4876118, lng: 10.4100709};
+            // The map, centered at Uluru
+            var map = new google.maps.Map(
+                document.getElementById('map'), {zoom: 15, center: uluru});
+            // The marker, positioned at Uluru
+            var marker = new google.maps.Marker({position: uluru, map: map});
+        }
+
 
         $(function () {
 

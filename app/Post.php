@@ -12,9 +12,6 @@ class Post extends Model
         return $this->belongsTo('App\Categorie');
     }
 
-    public function ville(){
-        return $this->belongsTo('App\Ville');
-    }
 
     public function user(){
         return $this->belongsTo('App\User');

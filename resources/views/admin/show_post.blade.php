@@ -69,7 +69,7 @@
                     <div class="product-qty">
                         <h4>lieu</h4>
                         <div class="quantity">
-                            <span>{{ $post->ville->title }}</span>
+                            <span>{{ $post->ville }}</span>
                         </div>
                     </div>
                 </div>

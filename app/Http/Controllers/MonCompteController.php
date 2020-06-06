@@ -15,6 +15,8 @@ class MonCompteController extends Controller
     public function mes_annonces()
     {
         $user=Auth::user();
-        return view('layouts.mon_compte.mes_annonces',compact('user'));
+        $posts=$user->posts;
+
+        return view('layouts.mon_compte.mes_annonces',compact('user','posts'));
     }
 }

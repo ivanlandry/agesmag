@@ -13,12 +13,7 @@
             </select>
         </div>
         <div class="col-md-3" style="padding-top: 6px;">
-            <select name="ville_search" id="ville_search" class="form-control">
-                <option value="Choisir une ville">Choisir une ville</option>
-                @foreach($villes as $ville)
-                    <option value="{{ $ville->id }}">{{ $ville->title }}</option>
-                @endforeach
-            </select>
+            <input type="text" class="form-control">
         </div>
         <div class="col-md-3" style="padding-top: 6px;">
             <button class=" fa fa-search" type="submit" class="bg-light"

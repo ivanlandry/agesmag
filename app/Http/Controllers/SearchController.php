@@ -19,9 +19,8 @@ class SearchController extends Controller
 
                 return response()->json($posts);
             } else {
-                $posts = Ville::find($request['val'])->posts;
 
-                return response()->json($posts);
+                return response()->json($request);
             }
         }
         abort(404);

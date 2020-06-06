@@ -57,4 +57,7 @@
 <!-- Slider -->
 <script type="text/javascript" src="javascripts/bxslider.min.js"></script>
 <script type="text/javascript" src="javascripts/script.slider.js"></script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKfKWQQf9yv02PAZZHSOyHvXzHQ5jLOKI&libraries=places&callback=initAutocomplete"
+async defer></script>
 </html>

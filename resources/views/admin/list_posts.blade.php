@@ -45,7 +45,7 @@
                                 </td>
                                 <td>{{ $post->title }} </td>
                                 <td>{{ $post->prix }} </td>
-                                <td>{{ substr( $post->description , 0 , 20)."..."  }}</td>
+                                <td>{{ substr( $post->description , 0 , 10)."..."  }}</td>
                                 <td>{{ $post->created_at }}</td>
                                 <td>{{ $post->etat }}</td>
                                 <td>

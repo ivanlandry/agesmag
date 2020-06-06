@@ -4,6 +4,7 @@
 
     @include('layouts.partials.header')
 
+
     <div class="container" style="padding-right: 50px; padding-top: 0;">
         <div class="page-breadcrumb">
             <nav aria-label="breadcrumb">
@@ -13,37 +14,78 @@
                             compte</a></li>
                 </ol>
             </nav>
-            <hr>
-            <div style="height: 60px;background:#0A6EAD ;color: #ffffff; font: 14px  Arial, Helvetica, sans-serif;">
-                <div class="row">
-                    <div class="col-md-2">
-                        <div>
-                            <span class="fa fa-user-circle"
-                                  style="font-size: 22px; padding-left: 10px; padding-right: 10px;"></span>
-                            <span>Bonjour  {{ $user->name }} ,</span>
-                            <a href="#" style="color: white;padding-left: 40px;"> Se deconnecter</a>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
+        </div>
+    </div>
 
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="card" style="padding-right: 30px;">
+                    <div class="card-title text-center">
+                        <div class="fa fa-user" style="font-size: 80px;padding: 20px 0 10px 0;"></div>
+                        <div class="card-text">{{ $user->name }}</div>
+                        <hr>
                     </div>
+
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><a href="">Mes annonces</a></li>
+                        <li class="list-group-item"><a href="">Parametres</a></li>
+                        <li class="list-group-item">
+                            <a href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">Deconnexion</a>
+                            <form id="logout-form" method="POST" action="{{ route('logout')  }}" style="display: none;">
+                                @csrf
+                            </form>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            <br><br>
-            <div>
-                <nav>
-                    <ul>
-                        <li>mes annonce</li>
-                        <li>parametres</li>
-                    </ul>
-                </nav>
+            <div class="col-md-10" style="padding-right: 50px;">
+                <div class="card">
+                    <div class="card-title">
+                        <h3 style="text-align: center; padding: 10px 0 0 0;">Toutes mes annonces</h3>
+                    </div>
+
+                    <table class="table table-striped table-responsive-xl table-responsive-sm table-responsive-lg">
+                        <thead>
+                        <tr>
+                            <th scope="col">Annonce</th>
+                            <th scope="col">Categorie</th>
+                            <th scope="col">date de creation</th>
+                            <th scope="col">Statut</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        @foreach($posts as $post)
+                            <tr>
+                                <th>
+                                    <img src="{{ asset('storage/'.$post->img_1) }}" alt="" height="50" width="50">
+                                    <span>{{ $post->title }}</span>
+                                </th>
+                                <td>{{ $post->categorie->title }}</td>
+                                <td>{{ $post->created_at }}</td>
+                                <td>{{ $post->etat }}</td>
+                                <td>
+                                    <form action="{{ route('post.destroy',$post) }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                    <input style="background-color: red;" type="submit" value="supprimer"/>
+                                    </form>
+                                </td>
+                            </tr>
+
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
         </div>
     </div>
 
-
-
-    <br><br>
     @include('layouts.partials.footer')
 
 @endsection

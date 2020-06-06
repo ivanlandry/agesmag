@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Categorie;
 use App\Post;
-use App\Ville;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -33,17 +32,17 @@ class HomeController extends Controller
         $post_recents = array();
 
         $categories = Categorie::all();
-        $villes = Ville::all();
+
 
         $posts = Post::all();
 
         foreach ($posts as $post) {
-            if ($this->dateDiff(time(), strtotime($post['created_at']))['day'] <= 2) {
+            if ($this->dateDiff(strtotime($post['created_at']),time())['hour'] < 24) {
                 $post_recents[] = $post;
             }
         }
 
-        return view('home', compact('villes', 'categories', 'post_recents'));
+        return view('home', compact( 'categories', 'post_recents'));
     }
 
     private function dateDiff($date1, $date2)
