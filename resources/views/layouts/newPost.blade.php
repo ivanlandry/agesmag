@@ -52,7 +52,7 @@
 
                 <div class="col-md-10 col-md-offset-1" style="box-shadow: 0 1px 4px rgba(0,0,0,0.3); background-color: #fff; padding: 30px;">
 
-                  <div style="display: flex;direction: ltr;">
+                  <div style="">
                       <div style="padding-right: 100px;">
                           <div class="ruban">
                           </div>
@@ -194,9 +194,7 @@
                               </button>
                           </form>
                       </div>
-                      <div>
-                          xxcccccc
-                      </div>
+
                   </div>
                 </div>
             </div>
