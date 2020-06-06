@@ -204,23 +204,20 @@
             </div>
         </div>
     </div>
-    </div>
-    <br>
 
-    <h6>Qu'avez-vous à vendre ?</h6>
+
+    <h6>Qu'avez-vous à vendre ?<br><br>
+        <a href="{{ route('post.create') }}" class="btn btn-primary"
+           style="height: 40px; width: 250px;font-size: 20px;">publier votre annonce</a>
+    </h6>
     <br><br>
-
-
-
     @include('layouts.partials.footer')
-    
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKfKWQQf9yv02PAZZHSOyHvXzHQ5jLOKI&callback=initMap">
+
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKfKWQQf9yv02PAZZHSOyHvXzHQ5jLOKI&callback=initMap">
     </script>
 
     <script>
-
-
-        geocode();
 
 
         function initMap() {

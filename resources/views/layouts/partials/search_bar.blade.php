@@ -1,75 +1,22 @@
-<div class="container" style=" padding-top: 0;padding-right: 60px;">
-    <form action="" class=" row  text-black">
-        @csrf
-        <div class="col-md-3">
-            <input type="text" placeholder="Que cherchez vous?" class="form-control">
-        </div>
-        <div class="col-md-3" style="padding-top: 6px;">
-            <select name="categorie_search" id="categorie_search" class="form-control">
-                <option value="Toutes categories">Toutes categories</option>
-                @foreach($categories as $categorie)
-                    <option value="{{ $categorie->id }}">{{ $categorie->title }}</option>
-                @endforeach
-            </select>
-        </div>
-        <div class="col-md-3" style="padding-top: 6px;">
-            <input type="text" class="form-control">
-        </div>
-        <div class="col-md-3" style="padding-top: 6px;">
-            <button class=" fa fa-search" type="submit" class="bg-light"
-                    style=" text-transform:capitalize; color: #0A6EAD; height:35px; background: #dddddd; border-radius: 2px; ">
-                rechercher
-            </button>
-        </div>
-    </form>
+<div class="card">
+    <div class="card-header">
+        rechercher une annonce
+    </div>
+    <div class="card-header">
+        <form action="{{ route('search') }}" method="get">
+            @csrf
+            <div class="form-group">
+                <select class="form-control" name="categorie">
+                    <option value="">choisir une categorie</option>
+                    @foreach($categories as $categorie)
+                        <option value="{{ $categorie->id }}">{{ $categorie->title }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="text" name="search" class="form-control" placeholder="que recherher vous ?" required>
+            </div>
+            <button type="submit">rechercher</button>
+        </form>
+    </div>
 </div>
-
-
-<script language="javascript">
-
-    $(function () {
-
-        function load_post(data) {
-
-
-        }
-
-        $.ajaxSetup({
-            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
-        });
-
-        $('#categorie_search,#ville_search').change(function () {
-
-            if ($(this).attr('id') == 'categorie_search') {
-
-                $.ajax({
-                    method: 'POST',
-                    url: '{{ route("search") }}',
-                    data: {
-                        type: 'categorie',
-                        val: $(this).val()
-                    },
-                    dataType: 'json'
-                }).done((data) => {
-                    alert(data)
-                }).fail((error) => {
-                    console.log(error)
-                });
-            } else {
-                $.ajax({
-                    method: 'POST',
-                    url: '{{ route("search") }}',
-                    data: {
-                        type: 'ville',
-                        val: $(this).val()
-                    },
-                    dataType: 'json'
-                }).done((data) => {
-                    alert(data)
-                }).fail((error) => {
-                    console.log(error)
-                });
-            }
-        });
-    });
-</script>

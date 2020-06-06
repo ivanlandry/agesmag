@@ -11,18 +11,12 @@ class SearchController extends Controller
 {
     public function __invoke(Request $request)
     {
-        if ($request->ajax()) {
+        $search=$request->input('search');
+        $categorie=$request->input('categorie');
 
-            if ($request['type'] == "categorie") {
+       $posts=Post::where('title', 'LIKE', "%{$search}%")->orWhere('ville', 'LIKE', "%{$search}%")->get();
 
-                $posts = Categorie::find($request['val'])->posts;
-
-                return response()->json($posts);
-            } else {
-
-                return response()->json($request);
-            }
-        }
-        abort(404);
+       $categories=Categorie::all();
+        return view('layouts.search',compact('posts','categories','search'));
     }
 }

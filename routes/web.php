@@ -27,7 +27,7 @@ Route::get('mes-annonces/','MonCompteController@mes_annonces')->name('mes-annonc
 
 Route::post('message','MessageController@sendEmail')->name("message_email");
 
-Route::post('search/','SearchController')->name('search');
+Route::get('search/','SearchController')->name('search');
 
 Route::resource('post', 'PostController');
 
