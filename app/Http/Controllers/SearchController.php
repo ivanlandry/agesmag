@@ -19,4 +19,5 @@ class SearchController extends Controller
        $categories=Categorie::all();
         return view('layouts.search',compact('posts','categories','search'));
     }
+
 }

@@ -19,11 +19,18 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/annonce', 'AllPostController@index')->name('annonce');
+
 Route::get('categorie/{categorie}', 'AllPostController@all_post_categorie')->name('annonce_categorie');
 
 Route::get('annonce/{post}', 'AllPostController@show')->name('showPost');
 
-Route::get('mes-annonces/','MonCompteController@mes_annonces')->name('mes-annonces');;
+Route::get('mes-annonces/','MonCompteController@mes_annonces')->name('mes-annonces');
+
+Route::get('parametres/','MonCompteController@parametre')->name('parametres');
+
+Route::post('modif_infos','MonCompteController@modif_infos')->name('modif_infos');
+
+Route::post('modif_password','MonCompteController@pmodif_password')->name('modif_password');
 
 Route::post('message','MessageController@sendEmail')->name("message_email");
 
