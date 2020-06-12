@@ -41,7 +41,7 @@
                 <br>
                 @foreach($post_recents as $p)
 
-                    <div class="col-md-3">
+                    <div class="col-md-4">
 
                         <a href="{{ route('showPost',$p) }}">
                             <img style="height: 150px; width: 100%;"

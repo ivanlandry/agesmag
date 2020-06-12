@@ -21,7 +21,7 @@
 
     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
         <div class="card">
-            <h5 class="card-header">Liste des post</h5>
+            <h5 class="card-header">Liste des annonces</h5>
             <div class="card-body p-0">
                 <div class="table-responsive">
                     <table class="table">
@@ -47,7 +47,13 @@
                                 <td>{{ $post->prix }} </td>
                                 <td>{{ substr( $post->description , 0 , 10)."..."  }}</td>
                                 <td>{{ $post->created_at }}</td>
-                                <td>{{ $post->etat }}</td>
+                                <td>
+                                    @if($post->etat==1)
+                                        <span class="badge-dot badge-success mr-1"></span>en ligne
+                                    @else
+                                        <span class="badge-dot badge-brand mr-1"></span>en attente
+                                    @endif
+                                </td>
                                 <td>
                                     <form action="{{ route('post.destroy',$post) }}" method="post">
                                         @csrf

@@ -28,7 +28,7 @@
     <!-- ============================================================== -->
     <div class="dashboard-header">
         <nav class="navbar navbar-expand-lg bg-white fixed-top">
-            <a class="navbar-brand" href="/">Tableau de bord</a>
+            <a class="navbar-brand" href="{{  route('dashboard') }}">Tableau de bord</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -74,11 +74,11 @@
                             <a class="nav-link" href="{{ route('dashboard') }}"><span  style="padding-right: 10px;"></span>Dashboard</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('categorie.index') }}">Categories de produits</a>
+                            <a class="nav-link" href="{{ route('categorie.index') }}">Categories d'annonces</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('post.index') }}">Produits</a>
+                            <a class="nav-link" href="{{ route('post.index') }}">Toutes les Annonces</a>
                         </li>
 
                         <li class="nav-item">

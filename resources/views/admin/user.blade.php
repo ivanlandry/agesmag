@@ -46,7 +46,7 @@
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->tel }}</td>
                                 <td>{{ $user->created_at }}</td>
-                                <td><span class="bg-success">activer</span></td>
+                                <td><span class="badge-dot badge-success mr-1"></span>Actif </td>
                                 <td>
                                     <button class="btn btn-danger"><a href="/admin/deleteuser/<%=user.id%>"
                                                                       style="color:white; text-decoration: none;">supprimer</a>

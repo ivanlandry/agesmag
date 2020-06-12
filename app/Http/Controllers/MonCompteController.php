@@ -37,7 +37,7 @@ class MonCompteController extends Controller
         $user->email = $request->input('email');
         $user->save();
 
-        session()->flash('message','votre compte a bien été mis à jour');
+        session()->flash('message', 'votre compte a bien été mis à jour');
 
         return redirect()->back();
     }
