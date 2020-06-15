@@ -10,7 +10,7 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">produits</li>
+                            <li class="breadcrumb-item active" aria-current="page">toutes les annonces</li>
                         </ol>
                     </nav>
                 </div>
@@ -55,13 +55,14 @@
                                     @endif
                                 </td>
                                 <td>
+                                    <button class="btn btn-success"><a href="{{ route('post.show',$post) }}"
+                                                                       style="color:white; text-decoration: none;"
+                                                                       class="fa fa-eye"></a></button>
                                     <form action="{{ route('post.destroy',$post) }}" method="post">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-danger fa fa-trash" type="submit"></button>
-                                        <button class="btn btn-success"><a href="{{ route('post.show',$post) }}"
-                                                                           style="color:white; text-decoration: none;"
-                                                                           class="fa fa-eye"></a></button>
+
                                         @if($post->etat==0)
                                             <a href="{{ route('valider',[$post,$post->user]) }}"
                                                style="color:white; text-decoration: none;"
