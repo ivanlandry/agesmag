@@ -23,9 +23,6 @@ class HomeController extends Controller
 
         $categorie=Categorie::all();
 
-
-
-
         return view('admin.home',compact('auth','posts','categorie','post_en_ligne','post_en_attente','users'));
     }
 }

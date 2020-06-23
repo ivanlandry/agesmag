@@ -4,7 +4,6 @@
 
     @include('layouts.partials.header')
 
-    @include('layouts.partials.search_bar')
 
     @include('layouts.partials.banner',['title'=>'toutes les annonces','route'=>$route])
 
@@ -13,6 +12,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
+
+                    @include('layouts.partials.search_bar')
+
+                    <br><br>
+
                     <div class="card">
                         <div class="card-header">categories</div>
                         <ul class="list-group list-group-flush">
@@ -24,6 +28,7 @@
                         </ul>
                     </div>
                 </div>
+
                 @if(count($posts)>0)
                     <div class="col-md-9">
                         <div>

@@ -82,6 +82,14 @@
                         </li>
 
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ route('post.index') }}">Annonces en ligne</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('post.index') }}">Annonces desactivées</a>
+                        </li>
+
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('user.index') }}">Utilisateurs</a>
                         </li>
 

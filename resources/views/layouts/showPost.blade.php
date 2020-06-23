@@ -81,7 +81,7 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1 box">
                 <div class="card-title" style="padding-top: 10px;">
-                    <h5 class="single_title">{{ $post->title }}</h5><br>
+                    <h5 class="single_title" >{{ $post->title }}</h5><br>
                 </div>
                 <div>
                     <div class="col-md-7">
@@ -159,6 +159,16 @@
                         <div class="d-flex justify-content-center">
                             <button type="submit" class="button_contact_product" id="button_contact_product_email"><span
                                     class="fa fa-envelope"></span> contacter par mail
+                            </button>
+                        </div>
+
+                        <hr style="width: 250px;">
+
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" class="btn"
+                                    style=" text-transform:lowercase;width:250px;color:rgb(10,110,176); border: 1px solid rgb(10,110,176); font-weight: normal!important; background-image: linear-gradient(to bottom, #f6f6f6 0%,#e8e8eb 100%)">
+                                <span class="fa fa-heart" style="color: darkgrey;"></span> Ajouter aux
+                                favoris
                             </button>
                         </div>
 

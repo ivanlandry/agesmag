@@ -100,13 +100,14 @@
                                        @endif
                                    </td>
                                    <td>
+                                       <button class="btn btn-success"><a href="{{ route('post.show',$post) }}"
+                                                                          style="color:white; text-decoration: none;"
+                                                                          class="fa fa-eye"></a></button>
                                        <form action="{{ route('post.destroy',$post) }}" method="post">
                                            @csrf
                                            @method('DELETE')
                                            <button class="btn btn-danger fa fa-trash" type="submit"></button>
-                                           <button class="btn btn-success"><a href="{{ route('post.show',$post) }}"
-                                                                              style="color:white; text-decoration: none;"
-                                                                              class="fa fa-eye"></a></button>
+
                                            @if($post->etat==0)
                                                <a href="{{ route('valider',[$post,$post->user]) }}"
                                                   style="color:white; text-decoration: none;"

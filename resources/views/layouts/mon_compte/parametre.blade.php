@@ -31,7 +31,7 @@
             <div class="col-md-6">
                 <div class="row">
                     <div class="col-md-6"><h4><b>informations</b></h4></div>
-                    <div class="col-md-3 col-md-offset-3"><a href="" class="modif-info"><i class="fa fa-edit"></i>
+                    <div class="col-md-3 col-md-offset-3"><a href="" style="text-decoration: none;" class="modif-info"><i class="fa fa-edit"></i>
                             Modifier</a></div>
                 </div>
                 <form action="{{ route('modif_infos') }}" method="post" class="form-box">
@@ -58,7 +58,7 @@
             <div class="col-md-6">
                 <div class="row">
                     <div class="col-md-6"><h4><b>mot de passe</b></h4></div>
-                    <div class="col-md-3 col-md-offset-3"><a href="" class="modif-password"><i class="fa fa-edit"></i>
+                    <div class="col-md-3 col-md-offset-3"><a href="" style="text-decoration: none;" class="modif-password"><i class="fa fa-edit"></i>
                             Modifier</a></div>
                 </div>
                 <form action="{{ route('modif_password') }}"  method="post" class="form-box">
