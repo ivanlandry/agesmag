@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Jorenvh\Share\Share;
 
 class PostController extends Controller
 {
@@ -118,7 +119,8 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return view('admin.show_post', compact('post'));
+        $share=Share::currentPage()->facebook();
+        return view('admin.show_post', compact('post','share'));
     }
 
     /**

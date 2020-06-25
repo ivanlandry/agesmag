@@ -42,6 +42,10 @@
 @yield('content')
 </body>
 
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ef50679db1bb466"></script>
+
+
 <script src="https://code.jquery.com/jquery.min.js"></script>
 <!-- Bootstrap JS form CDN -->
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
@@ -57,6 +61,7 @@
 <!-- Slider -->
 <script type="text/javascript" src="javascripts/bxslider.min.js"></script>
 <script type="text/javascript" src="javascripts/script.slider.js"></script>
+
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKfKWQQf9yv02PAZZHSOyHvXzHQ5jLOKI&libraries=places&callback=initAutocomplete"
 async defer></script>
