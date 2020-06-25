@@ -171,7 +171,13 @@
                                 favoris
                             </button>
                         </div>
-
+                        <br>
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" class="btn"
+                                    style=" text-transform:lowercase;width:250px;color:rgb(10,110,176); border: 1px solid rgb(10,110,176); font-weight: normal!important; background-image: linear-gradient(to bottom, #f6f6f6 0%,#e8e8eb 100%)">
+                                <span class="fa fa-share-alt" style=""></span> Partager l'annonce
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
