@@ -1,5 +1,72 @@
 @extends('layouts.app')
 
+@section('extra-css')
+
+    <style>
+        #chat .containere {
+            border: 2px solid #dedede;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        #chat .darker {
+            border-color: #ccc;
+            background-color: #ddd;
+        }
+
+        #chat .containere::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        .containere img {
+            float: left;
+            max-width: 60px;
+            width: 100%;
+            margin-right: 20px;
+            border-radius: 50%;
+        }
+
+        .containere img.right {
+            float: right;
+            margin-left: 20px;
+            margin-right: 0;
+        }
+
+        .time-right {
+            float: right;
+            color: #aaa;
+        }
+
+        .time-left {
+            float: left;
+            color: #999;
+        }
+    </style>
+
+    <style>
+        .form-box {
+            background: transparent;
+            border: 1px solid #DDD;
+            position: relative;
+            margin: 0 0 40px;
+            padding: 15px 18px 7px;
+            word-wrap: break-word;
+        }
+
+        .button-info, .button-password {
+            display: none;
+        }
+
+    </style>
+
+
+@endsection
+
+
 @section('content')
 
     @include('layouts.partials.header')
@@ -30,8 +97,11 @@
                     </div>
 
                     <ul class="list-group list-group-flush">
+                        <li class="list-group-item" ><a href="{{ route('messages') }}" style="text-decoration: none;"><i class ="fa fa-envelope"><span class="badge badge-danger">4</span></i>  messages</a></li>
+                        <li class="list-group-item" ><a href="{{ route('mes-annonces') }}" style="text-decoration: none;"><i class ="fa fa-heart"><span class="badge badge-danger">4</span></i>  favoris</a></li>
                         <li class="list-group-item" ><a href="{{ route('mes-annonces') }}" style="text-decoration: none;"><i class ="fa fa-book"></i> mes annonces</a></li>
                         <li class="list-group-item"><a href="{{ route('parametres') }}" style="text-decoration: none;"><i class ="fa fa-cogs"></i> Parametres</a></li>
+                        <li class="list-group-item"><a href="{{ route('paiement') }}" style="text-decoration: none;"><i class ="fa fa-cogs"></i> Passer premium</a></li>
                         <li class="list-group-item">
                             <a href="{{ route('logout') }}" style="text-decoration: none;"
                                onclick="event.preventDefault();
@@ -64,7 +134,7 @@
                             </thead>
                             <tbody>
 
-                            @foreach($posts as $post)
+                            @foreach($posts ?? '' as $post)
                                 <tr>
                                     <th>
                                         <img src="{{ asset('storage/'.$post->img_1) }}" alt="" height="50" width="50">
@@ -100,5 +170,98 @@
     </div>
 
     @include('layouts.partials.footer')
+
+@endsection
+
+
+@section('extra-script')
+    <script src="https://js.stripe.com/v3/"></script>
+
+   @yield('paiement')
+
+    <script>
+        $(function () {
+
+            $('.modif-info').click(function (event) {
+
+                event.preventDefault();
+
+                $('#nom , #tel , #email').prop('disabled', false);
+
+                $('.button-info').show();
+            });
+
+            $('.modif-password').click(function (event) {
+
+                event.preventDefault();
+
+                $('#password').prop('disabled', false);
+
+                $('.button-password').show();
+            });
+
+
+        });
+    </script>
+
+    <script>
+
+        $(function () {
+            var destinataire = "";
+
+            $('.show-chat').on('click', function (e) {
+
+                e.preventDefault();
+                $('.containere-chat').show();
+
+                $.ajax({
+
+                    method: "get",
+                    url: $(this).attr('href'),
+                    dataType: "json",
+
+                }).done((function (data) {
+
+                    $('.card-menber').removeClass('col-md-12').addClass('col-md-4');
+
+                    $('.chat-card').html(data[0]);
+                    destinataire = data[1];
+                    $('#form-message').show();
+
+                    $('.chat-card').show(500);
+
+
+                })).fail(function (error) {
+                    console.log(error);
+                });
+
+            });
+
+            $('#form-message').submit(function (e) {
+                e.preventDefault();
+
+                $.ajax({
+                    method: "post",
+                    url: $(this).attr('action'),
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                        "message": $('#message').val(),
+                        "destinataire": destinataire
+                    },
+                    dataType: "json",
+                }).done(function (data) {
+
+                    $('.chat-card').html(data);
+                    $('#message').val('');
+
+                }).fail(function (error) {
+                    console.log(error);
+                });
+
+
+            });
+        });
+
+    </script>
 
 @endsection

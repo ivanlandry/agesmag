@@ -25,6 +25,7 @@ class CreatePostsTable extends Migration
             $table->string('img_2');
             $table->string('img_3');
             $table->integer('etat')->default(0);
+            $table->integer('actif')->default(1);
             $table->timestamps();
         });
     }

@@ -33,6 +33,9 @@
 
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
+    @yield('extra-css')
+
     <meta name = "csrf-token" content = "{{csrf_token ()}}" />
     <title>Laravel</title>
 
@@ -58,11 +61,8 @@
 
 <script src="{{asset('js/main.js')}}"></script>
 <script src="{{ asset('js/javascripts/form.js')  }}"></script>
-<!-- Slider -->
-<script type="text/javascript" src="javascripts/bxslider.min.js"></script>
-<script type="text/javascript" src="javascripts/script.slider.js"></script>
+
+@yield('extra-script')
 
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKfKWQQf9yv02PAZZHSOyHvXzHQ5jLOKI&libraries=places&callback=initAutocomplete"
-async defer></script>
 </html>

@@ -1,8 +1,5 @@
 @extends('layouts.app')
-
-@section('content')
-
-    @include('layouts.partials.header')
+@section('extra-css')
 
     <style>
         .info_annonce {
@@ -47,6 +44,14 @@
         }
 
     </style>
+
+@endsection
+
+@section('content')
+
+    @include('layouts.partials.header')
+
+
     <div class="container" style="padding-right: 50px;">
         <div class="page-breadcrumb">
             <nav aria-label="breadcrumb">
@@ -104,6 +109,35 @@
                             <h4><b> description :</b></h4>
                             <span>{{ $post->description }}</span>
                         </div>
+
+                        <div class="contact_chat_message" style="display: none;">
+                            @guest
+                                    <div class="alert alert-success text-center">
+                                        <span>vous devez vous connecter</span>
+                                    </div>
+                            @else
+                            <hr>
+                            <br>
+                            <form action="{{ route('chat_message') }}" method="POST">
+                                @csrf
+                                <h3><b> Envoyer un message à {{ $post->user->name }} </b></h3>
+
+                                <div class="form-group" style="display: none;">
+                                    <input type="text" value="{{ $post->user->id }}" name="id_destinataire">
+                                </div>
+                                <div class="form-group" style="display: none;">
+                                    <input type="text" value="{{ $post->user->name }}" name="name_destinataire">
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="form-control" placeholder="message"
+                                              style="height: 100px;" name="message"></textarea>
+                                </div>
+
+                                <input type="submit" value="envoyer">
+                            </form>
+                                @endguest
+                        </div>
+
                         <div class="contact_single_product_email" style="display: none;">
                             <hr>
                             <br>
@@ -151,8 +185,8 @@
                         </div>
                         <br>
                         <div class="d-flex justify-content-center">
-                            <button type="submit" class="button_contact_product" id="button_contact_product_phone"><span
-                                    class="fa fa-phone"></span> afficher le telephone
+                            <button type="submit" class="button_chat" id="button_chat"><span
+                                    class=""></span> envoyer un message
                             </button>
                         </div>
                         <br>
@@ -254,8 +288,9 @@
                 $('.contact_single_product_email').show();
             });
 
-            $('#button_contact_product_phone').on('click', function (event) {
+            $('#button_chat').on('click', function (event) {
                 event.preventDefault();
+                $('.contact_chat_message').show();
             });
 
             $('.img').click(function (event) {
@@ -276,5 +311,11 @@
         });
 
     </script>
+
 @endsection
 
+
+@section('extra-script')
+
+
+@endsection

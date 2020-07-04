@@ -106,6 +106,8 @@
       <path value="$PROJECT_DIR$/vendor/alexpechkarev/google-maps" />
       <path value="$PROJECT_DIR$/vendor/jbroadway/urlify" />
       <path value="$PROJECT_DIR$/vendor/jorenvanhocht/laravel-share" />
+      <path value="$PROJECT_DIR$/vendor/stripe/stripe-php" />
+      <path value="$PROJECT_DIR$/vendor/ibracilinks/orange-money" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />

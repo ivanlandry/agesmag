@@ -3,7 +3,7 @@
 
         <div class="col-md-4">
             <a href="/">
-                <img src="{{ asset('images/hom.png') }}" alt="" style="height: 50px;">
+                <img src="{{ asset('images/hom.png') }}" alt="" style="height: 60px; width:200px;">
             </a>
         </div>
         <div class="col-md-4">

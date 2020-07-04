@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-4 col-sm-4">
                 <div class="footer-about-us">
-                    <h2>u<span>Stora</span></h2>
+                    <h2>vitri<span>mag</span></h2>
                     <p>L doloribus ver ritatis magni at?</p>
 
                 </div>

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5c795c1f645f1e485f36641e7adfaf8b",
+    "content-hash": "8bf882f305ad01979da735e4566612e3",
     "packages": [
         {
             "name": "alexpechkarev/geometry-library",
@@ -816,6 +816,49 @@
                 "url"
             ],
             "time": "2019-07-01T23:21:34+00:00"
+        },
+        {
+            "name": "ibracilinks/orange-money",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Ibracilinks/OrangeMoney.git",
+                "reference": "37b2a7a96dc5a42d596ded86816e3e2eed3b7be7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Ibracilinks/OrangeMoney/zipball/37b2a7a96dc5a42d596ded86816e3e2eed3b7be7",
+                "reference": "37b2a7a96dc5a42d596ded86816e3e2eed3b7be7",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Ibracilinks\\OrangeMoney\\Providers\\OrangeMoneyServiceProvider"
+                    ],
+                    "aliases": {
+                        "OrangeMoney": "Ibracilinks\\OrangeMoney\\Facades\\OrangeMoney"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Ibracilinks\\OrangeMoney\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ibraci Links",
+                    "email": "hello@ibracilinks.com"
+                }
+            ],
+            "description": "A laravel package for Orange Money Web Payment API.",
+            "time": "2020-05-19T11:24:40+00:00"
         },
         {
             "name": "jbroadway/urlify",
@@ -2124,6 +2167,63 @@
                 "uuid"
             ],
             "time": "2020-03-29T20:13:32+00:00"
+        },
+        {
+            "name": "stripe/stripe-php",
+            "version": "v7.39.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stripe/stripe-php.git",
+                "reference": "350e4f4db026bd0627925885b30c09d054777b68"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/350e4f4db026bd0627925885b30c09d054777b68",
+                "reference": "350e4f4db026bd0627925885b30c09d054777b68",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "2.16.1",
+                "php-coveralls/php-coveralls": "^2.1",
+                "phpunit/phpunit": "^5.7",
+                "squizlabs/php_codesniffer": "^3.3",
+                "symfony/process": "~3.4"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Stripe\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Stripe and contributors",
+                    "homepage": "https://github.com/stripe/stripe-php/contributors"
+                }
+            ],
+            "description": "Stripe PHP Library",
+            "homepage": "https://stripe.com/",
+            "keywords": [
+                "api",
+                "payment processing",
+                "stripe"
+            ],
+            "time": "2020-06-25T23:56:19+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -6083,7 +6183,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "ibracilinks/orange-money": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

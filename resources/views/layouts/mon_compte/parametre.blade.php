@@ -1,20 +1,5 @@
 @extends('layouts.mon_compte.mes_annonces')
 
-<style>
-    .form-box {
-        background: transparent;
-        border: 1px solid #DDD;
-        position: relative;
-        margin: 0 0 40px;
-        padding: 15px 18px 7px;
-        word-wrap: break-word;
-    }
-
-    .button-info, .button-password {
-        display: none;
-    }
-
-</style>
 
 
 @section('card')
@@ -75,30 +60,7 @@
 
     </div>
 
-    <script>
-        $(function () {
 
-            $('.modif-info').click(function (event) {
-
-                event.preventDefault();
-
-                $('#nom , #tel , #email').prop('disabled', false);
-
-                $('.button-info').show();
-            });
-
-            $('.modif-password').click(function (event) {
-
-                event.preventDefault();
-
-                $('#password').prop('disabled', false);
-
-                $('.button-password').show();
-            });
-
-
-        });
-    </script>
 
 @endsection
 

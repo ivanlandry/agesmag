@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
-
-@section('content')
+@section('extra-css')
 
     <style>
         h6 {
@@ -12,6 +11,11 @@
             font-size: 25px;
         }
     </style>
+
+@endsection
+
+@section('content')
+
 
     @include('layouts.partials.header')
 
