@@ -86,7 +86,7 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1 box">
                 <div class="card-title" style="padding-top: 10px;">
-                    <h5 class="single_title" >{{ $post->title }}</h5><br>
+                    <h5 class="single_title">{{ $post->title }}</h5><br>
                 </div>
                 <div>
                     <div class="col-md-7">
@@ -112,30 +112,30 @@
 
                         <div class="contact_chat_message" style="display: none;">
                             @guest
-                                    <div class="alert alert-success text-center">
-                                        <span>vous devez vous connecter</span>
-                                    </div>
+                                <div class="alert alert-success text-center">
+                                    <span>vous devez vous connecter</span>
+                                </div>
                             @else
-                            <hr>
-                            <br>
-                            <form action="{{ route('chat_message') }}" method="POST">
-                                @csrf
-                                <h3><b> Envoyer un message à {{ $post->user->name }} </b></h3>
+                                <hr>
+                                <br>
+                                <form action="{{ route('chat_message') }}" method="POST">
+                                    @csrf
+                                    <h3><b> Envoyer un message à {{ $post->user->name }} </b></h3>
 
-                                <div class="form-group" style="display: none;">
-                                    <input type="text" value="{{ $post->user->id }}" name="id_destinataire">
-                                </div>
-                                <div class="form-group" style="display: none;">
-                                    <input type="text" value="{{ $post->user->name }}" name="name_destinataire">
-                                </div>
-                                <div class="form-group">
+                                    <div class="form-group" style="display: none;">
+                                        <input type="text" value="{{ $post->user->id }}" name="id_destinataire">
+                                    </div>
+                                    <div class="form-group" style="display: none;">
+                                        <input type="text" value="{{ $post->user->name }}" name="name_destinataire">
+                                    </div>
+                                    <div class="form-group">
                                     <textarea class="form-control" placeholder="message"
                                               style="height: 100px;" name="message"></textarea>
-                                </div>
+                                    </div>
 
-                                <input type="submit" value="envoyer">
-                            </form>
-                                @endguest
+                                    <input type="submit" value="envoyer">
+                                </form>
+                            @endguest
                         </div>
 
                         <div class="contact_single_product_email" style="display: none;">
@@ -199,17 +199,22 @@
                         <hr style="width: 250px;">
 
                         <div class="d-flex justify-content-center">
-                            <button type="submit" class="btn"
-                                    style=" text-transform:lowercase;width:250px;color:rgb(10,110,176); border: 1px solid rgb(10,110,176); font-weight: normal!important; background-image: linear-gradient(to bottom, #f6f6f6 0%,#e8e8eb 100%)">
-                                <span class="fa fa-heart" style="color: darkgrey;"></span> Ajouter aux
-                                favoris
-                            </button>
+                            <form action="{{ route('add_favoris',$post) }}" id="add_favoris">
+                                <button type="submit" class="btn"
+                                        style=" text-transform:lowercase;width:250px;color:rgb(10,110,176); border: 1px solid rgb(10,110,176); font-weight: normal!important; background-image: linear-gradient(to bottom, #f6f6f6 0%,#e8e8eb 100%)">
+                                    <span id="heart" class="fa fa-heart" style="color: darkgrey;"></span> Ajouter aux
+                                    favoris
+                                </button>
+                            </form>
                         </div>
                         <br>
                         <div class="d-flex justify-content-center">
 
                             <!-- Go to www.addthis.com/dashboard to customize your tools -->
-                            <span style="font-size: 20px; color:rgb(10,110,176); padding-right: 10px; padding-top: 10px;" class="fa fa-share-alt"></span>  <div class="addthis_inline_share_toolbox"></div>
+                            <span
+                                style="font-size: 20px; color:rgb(10,110,176); padding-right: 10px; padding-top: 10px;"
+                                class="fa fa-share-alt"></span>
+                            <div class="addthis_inline_share_toolbox"></div>
 
                         </div>
                     </div>
@@ -218,10 +223,40 @@
             <br>
             <div class="col-md-10 col-md-offset-1" style="padding-top: 20px;">
                 <div id="map">
+                </div>
+            </div>
+            <div class="col-md-10 col-md-offset-1 box" style="padding-top: 20px;">
+                <div class="col-md-2 col-md-offset-8">
+                    <a href="#" style="text-decoration: none;color: black;"><span><span id="nb_commentaire"> {{ count($commentaires) }}</span> commentaires</span></a>
+                </div>
+                <br>
+                <hr>
+                @foreach($commentaires as $commentaire)
+                    <div class="col-md-12">
+                        <div class="col-md-2">
+                            <span class="fa fa-user text-primary" style="font-size: 20px;"></span> <span
+                                class="text-primary">{{ $commentaire->user->name }}  </span>
+                        </div>
+                        <div class="col-md-6" >
+                            <b>{{ $commentaire->commentaire }}</b>
+                        </div>
+                        <div class="col-md-3">
+                            posté le {{ $commentaire->created_at->format('d/m/Y à H:m') }}
+                        </div>
+                    </div><br><br>
+                @endforeach
 
+                <div class="col-md-12">
+                    <div class="col-md-2">
+                        <span class="fa fa-user text-primary" style="font-size: 20px;"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" placeholder="votre commentaire ..." id="commentaire">
+                    </div>
                 </div>
             </div>
         </div>
+
     </div>
 
     <br><br>
@@ -255,7 +290,6 @@
         </div>
     </div>
 
-
     <h6>Qu'avez-vous à vendre ?<br><br>
         <a href="{{ route('post.create') }}" class="btn btn-primary"
            style="height: 40px; width: 250px;font-size: 20px;">publier votre annonce</a>
@@ -263,25 +297,73 @@
     <br><br>
     @include('layouts.partials.footer')
 
+
+@endsection
+
+
+@section('extra-script')
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKfKWQQf9yv02PAZZHSOyHvXzHQ5jLOKI&callback=initMap">
     </script>
 
     <script>
 
-
         function initMap() {
-            // The location of Uluru
-            var uluru = {lat: 5.4876118, lng: 10.4100709};
-            // The map, centered at Uluru
-            var map = new google.maps.Map(
-                document.getElementById('map'), {zoom: 15, center: uluru});
-            // The marker, positioned at Uluru
-            var marker = new google.maps.Marker({position: uluru, map: map});
+
+            var apiKey = "16cb5239b9e547629a662358e226b73a";
+
+            var request = axios.get("https://api.opencagedata.com/geocode/v1/json?q={{ $post->ville }}&key=" + apiKey + "&pretty=1");
+
+
+            request.then(response => {
+
+                console.log(response.data);
+
+                var map = new google.maps.Map(
+                    document.getElementById('map'), {zoom: 15, center: response.data.results[2].geometry});
+                // The marker, positioned at Uluru
+                var marker = new google.maps.Marker({position: response.data.results[2].geometry, map: map});
+            });
+
         }
 
-
         $(function () {
+
+            $('#commentaire').keypress(function (event) {
+
+                var keycode = (event.keyCode ? event.keyCode : event.which);
+
+                if (keycode == '13') {
+
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        url: '/postcommentaire',
+                        method: 'post',
+                        dataType: 'json',
+                        data: {
+                            '_token': '{{ csrf_token() }}',
+                            'commentaire': $(this).val(),
+                            'post': '{{ $post->id }}'
+                        }
+
+                    }).done((function (data) {
+                        if (data == "auth") {
+                            alert('authentification requis ');
+                        } else {
+                            $('#nb_commentaire').text(data['nb_commentaire']);
+                        }
+
+                    })).fail(function (error) {
+                        console.log(error);
+                    });
+
+                }
+            });
 
             $('#button_contact_product_email').on('click', function (event) {
                 event.preventDefault();
@@ -310,12 +392,36 @@
             });
         });
 
+        $('#add_favoris').on('submit', function (event) {
+            event.preventDefault();
+
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                method: "get",
+                url: $(this).attr('action'),
+                dataType: "json",
+
+            }).done((function (data) {
+
+                if (data == "succes") {
+                    $('#heart').css({
+                        color: '#EE8877'
+                    });
+                } else {
+                    $('#heart').css({
+                        color: 'darkgrey'
+                    });
+                }
+
+            })).fail(function (error) {
+                console.log(error);
+            });
+
+        });
+
     </script>
-
-@endsection
-
-
-@section('extra-script')
 
 
 @endsection

@@ -10,7 +10,7 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
-                            <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('post.index') }}">produits</a> </li>
+                            <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('post.index') }}">annonces</a> </li>
                             <li class="breadcrumb-item active" aria-current="page">{{ $post->title }}</li>
                         </ol>
                     </nav>
@@ -89,7 +89,9 @@
                     <h4 class="mb-1">Description</h4>
                     <p>{{ $post->description }}</p>
                 </div>
+
             </div>
+
         </div>
     </div>
 

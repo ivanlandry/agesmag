@@ -36,10 +36,8 @@
 @section('paiement')
 
     <script !src="">
-
         var stripe = Stripe('pk_test_51H18IPKvuB13xNWIgE7ugGwCrvuFZcOB7i5KdMqdup430dVDgObDRHWah4EbWoql1Rrc3JLC62ZpQr9gI3oKUQbJ00xrjT7YWP');
         var elements = stripe.elements();
-
         // Set up Stripe.js and Elements to use in checkout form
         var style = {
             base: {
@@ -56,11 +54,8 @@
                 iconColor: "#fa755a"
             }
         };
-
         var card = elements.create("card", {style: style});
-
         card.mount("#card-element");
-
         card.on('change', ({error}) => {
             const displayError = document.getElementById('card-errors');
             if (error) {
@@ -69,16 +64,12 @@
                 displayError.textContent = '';
             }
         });
-
-
         var form = document.getElementById('payment-form');
-
         form.addEventListener('submit', function(ev) {
             ev.preventDefault();
             stripe.confirmCardPayment("{{ $clientSecret }}", {
                 payment_method: {
                     card: card,
-
                 }
             }).then(function(result) {
                 if (result.error) {
@@ -87,15 +78,11 @@
                 } else {
                     // The payment has been processed!
                     if (result.paymentIntent.status === 'succeeded') {
-                       console.log(result.paymentIntent)
+                        console.log(result.paymentIntent)
                     }
                 }
             });
         });
-
-
     </script>
 
 @endsection
-
-

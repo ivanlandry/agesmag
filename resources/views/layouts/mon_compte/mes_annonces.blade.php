@@ -97,10 +97,10 @@
                     </div>
 
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item" ><a href="{{ route('messages') }}" style="text-decoration: none;"><i class ="fa fa-envelope"><span class="badge badge-danger">4</span></i>  messages</a></li>
-                        <li class="list-group-item" ><a href="{{ route('mes-annonces') }}" style="text-decoration: none;"><i class ="fa fa-heart"><span class="badge badge-danger">4</span></i>  favoris</a></li>
+                        <li class="list-group-item" ><a href="{{ route('messages') }}" style="text-decoration: none;"><i class ="fa fa-envelope"><span class="badge badge-danger">0</span></i>  messages</a></li>
+                        <li class="list-group-item" ><a href="{{ route('mes-annonces') }}" style="text-decoration: none;"><i class ="fa fa-heart"><span class="badge badge-danger">0</span></i>  favoris</a></li>
                         <li class="list-group-item" ><a href="{{ route('mes-annonces') }}" style="text-decoration: none;"><i class ="fa fa-book"></i> mes annonces</a></li>
-                        <li class="list-group-item"><a href="{{ route('parametres') }}" style="text-decoration: none;"><i class ="fa fa-cogs"></i> Parametres</a></li>
+                        <li class="list-group-item"><a href="{{ route('parametre') }}" style="text-decoration: none;"><i class ="fa fa-cogs"></i> Parametres</a></li>
                         <li class="list-group-item"><a href="{{ route('paiement') }}" style="text-decoration: none;"><i class ="fa fa-cogs"></i> Passer premium</a></li>
                         <li class="list-group-item">
                             <a href="{{ route('logout') }}" style="text-decoration: none;"

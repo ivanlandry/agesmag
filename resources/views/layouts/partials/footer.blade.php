@@ -5,8 +5,8 @@
         <div class="row">
             <div class="col-md-4 col-sm-4">
                 <div class="footer-about-us">
-                    <h2>vitri<span>mag</span></h2>
-                    <p>L doloribus ver ritatis magni at?</p>
+                    <h2>VITRI<span>MAG</span></h2>
+
 
                 </div>
             </div>
@@ -21,7 +21,7 @@
                         @endguest
                         <li><a href="{{ route('post.create')  }}">publier une annonce</a></li>
                         <li><a href="#">favoris</a></li>
-                        <li><a href="{{ route('contact.create')  }}">contact</a></li>
+
                     </ul>
                 </div>
             </div>

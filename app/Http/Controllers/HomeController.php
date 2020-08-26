@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Categorie;
+use App\Message;
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -41,6 +43,7 @@ class HomeController extends Controller
                 $post_recents[] = $post;
             }
         }
+
 
         return view('home', compact( 'categories', 'post_recents'));
     }

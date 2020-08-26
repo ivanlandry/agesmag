@@ -244,6 +244,7 @@
 
             var place = autocomplete.getPlace();
 
+
         }
 
 

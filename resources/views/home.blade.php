@@ -31,8 +31,8 @@
 
     <div class="container">
 
-        <div class="row">
-            <div id="carouselExampleIndicators" class="carousel slide col-md-12" data-ride="carousel" style="border: 1px solid black;">
+        <div class="row bg-light">
+            <div id="carouselExampleIndicators" class="carousel slide col-md-12" data-ride="carousel" style="border: 1px solid whitesmoke;">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -40,13 +40,13 @@
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="{{ asset('images/logo.png') }}" style="height: 300px; width: 100%;" class="d-block w-100" alt="...">
+                        <img src="{{ asset('images/slide.jpg') }}" style="height: 300px; width: 100%;" class="d-block w-100" alt="...">
                     </div>
                     <div class="carousel-item">
-                        <img  src="{{ asset('images/logo.png') }}" style="height: 300px; width: 100%;" class="d-block w-100" alt="...">
+                        <img  src="{{ asset('images/slide1.jpg') }}" style="height: 300px; width: 100%;" class="d-block w-100" alt="...">
                     </div>
                     <div class="carousel-item">
-                        <img  src="{{ asset('images/logo.png') }}" style="height: 300px; width: 100%;" class="d-block w-100" alt="...">
+                        <img  src="{{ asset('images/slide2.jpg') }}" style="height: 300px; width: 100%;" class="d-block w-100" alt="...">
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">

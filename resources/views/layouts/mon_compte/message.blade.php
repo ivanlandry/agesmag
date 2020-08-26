@@ -23,18 +23,6 @@
                     <hr>
                 @endforeach
 
-                @foreach($messages_recu as $message)
-
-                    <a href="{{ route('show_chat',$message->user_id) }}" style="text-decoration: none;"
-                       class="show-chat">
-                        <b style="color: black;">{{ $message->expediteur_name }}</b>
-                        <img src="{{ asset('images/avatar.png') }}" alt="Avatar" style="width:100%;">
-                        <p>{{ $message->message }}</p>
-                        <span class="time-right fa fa-trash" style="color: red;"></span>
-                    </a>
-                    <br>
-                    <hr>
-                @endforeach
 
             </div>
         </div>

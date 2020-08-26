@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
-use Jorenvh\Share\Share;
+
 
 class PostController extends Controller
 {
@@ -70,7 +70,7 @@ class PostController extends Controller
             'img_1' => 'required|image|max:5000',
             'img_2' => 'required|image|max:5000',
             'img_3' => 'required|image|max:5000',
-            'ville'=>'required'
+            'ville' => 'required'
         ]);
 
         $user = "";
@@ -119,8 +119,8 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        $share=Share::currentPage()->facebook();
-        return view('admin.show_post', compact('post','share'));
+        // $share=Share::currentPage()->facebook();
+        return view('admin.show_post', compact('post', 'share'));
     }
 
     /**
@@ -156,9 +156,9 @@ class PostController extends Controller
     {
         Post::destroy($post->id);
 
-       /* Storage::delete('public/posts/' . $post->img_1);
-        Storage::delete('public/posts/' . $post->img_2);
-        Storage::delete('public/posts/' . $post->img_3);  */
+        /* Storage::delete('public/posts/' . $post->img_1);
+         Storage::delete('public/posts/' . $post->img_2);
+         Storage::delete('public/posts/' . $post->img_3);  */
 
         return redirect()->back();
     }

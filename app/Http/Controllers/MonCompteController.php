@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Ibracilinks\OrangeMoney\OrangeMoney;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\DB;
 use Stripe\Stripe;
 use Stripe\PaymentIntent;
 use App\Message;
@@ -59,15 +61,25 @@ class MonCompteController extends Controller
     {
         $user = Auth::user();
         $posts = $user->posts;
-        $messages = Message::where('user_id', $user->id)->get();
-        $messages_recu = Message::where('destinataire_id', $user->id)->get();
+       // $messages = Message::where('user_id', $user->id)->orwhere('destinataire_id',$user->id)->get();
 
-        return view('layouts.mon_compte.message', compact('user', 'posts', 'messages', 'messages_recu'));
+        $messages = DB::table('messages')
+            ->groupBy('user_id','destinataire_id')
+            ->having('user_id', '=',  $user->id)->orHaving('destinataire_id','=',$user->id)
+            ->get();
+
+        return view('layouts.mon_compte.message', compact('user', 'posts', 'messages'));
     }
 
     private function getMessage($destinataire)
     {
-        $messages = Message::where('user_id', Auth::user()->id)->orwhere('user_id', $destinataire)->where('destinataire_id', $destinataire)->orwhere('destinataire_id', Auth::user()->id)->get();
+
+        $messages = Message::where(function ($query) use ($destinataire) {
+            $query->where('user_id', Auth::user()->id)->where('destinataire_id', $destinataire);
+        })->orwhere(function ($query) use ($destinataire) {
+            $query->where('user_id', $destinataire)->where('destinataire_id', Auth::user()->id);
+        })->get();
+
 
         $content = "";
 
@@ -76,6 +88,7 @@ class MonCompteController extends Controller
             if ($message->user_id != Auth::user()->id) {
 
                 $content = $content . '
+
              <div class="containere content-message">
                 <img src="' . asset("images/avatar.png") . '" alt="Avatar" style="width:100%;">
                 <b>' . $message->expediteur_name . '</b>
